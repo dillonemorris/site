@@ -225,7 +225,7 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+        {[image4, image1, image5, image2, image3].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
@@ -264,7 +264,10 @@ export default function Home({ articles }) {
             Software engineer, designer, and React expert.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Dillon, a software engineer and designer based in Phoenix. Writing quality component APIs is my craft. I have a passion for user interface design and enjoy collaborating with product and design teams.
+            I’m Dillon, a software engineer and designer based in Phoenix.
+            Writing quality component APIs is my craft. I have a passion for
+            user interface design and enjoy collaborating with product and
+            design teams.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
