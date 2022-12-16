@@ -64,14 +64,17 @@ export default function About() {
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I've always had diverse interests. I love sports. As a kid I was
-                obsessed with basketball and recently got back into it, playing
-                pick-up games at my gym. I’m also a huge golf nerd and try to
-                get out and play as much as I can. I’ve always had a passion for
-                music and have played the guitar since the 6th grade (it doesn’t
-                show). With these and other diverse interests I'm able to find
-                common ground with anyone and see things from different
-                perspectives.
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                Creating quality software is my craft but I've always had
+                diverse interests outside of technology. I love sports. As a kid
+                I was obsessed with basketball and recently got back into it,
+                playing pick-up games at my gym. I’m also a huge golf nerd and
+                try to get out and play as much as I can. I’ve always had a
+                passion for music and have played the guitar since the 6th grade
+                (it doesn’t show). With these and other diverse interests,{' '}
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                I'm able to find common ground with anyone and see things from
+                different perspectives.
               </p>
               <p>
                 I’m a former customer service professional and have ingrained
@@ -85,12 +88,24 @@ export default function About() {
               <p>
                 I am a developer specializing in React, Next and Typescript. I
                 also have experience in React Native, having worked extensively
-                on a fitness app at my previous company, Synapse Studios.
-                Currently, I get to wield and grow these skills at a company
-                called Formidable. Right now I’m part of a team helping a big
-                name clothing brand migrate to React. I love being part of a
-                team and take pride in helping others level up while learning
-                from those who can help me fill my own knowledge gaps.
+                on a fitness app at my previous company,{' '}
+                <a
+                  className="font-bold text-teal-600"
+                  href={'https://www.synapsestudios.com'}
+                >
+                  Synapse Studios
+                </a>
+                . Most recently, I got to wield and grow these skills at a
+                company called{' '}
+                <a
+                  className="font-bold text-teal-600"
+                  href={'https://formidable.com/'}
+                >
+                  Formidable
+                </a>
+                . I love being part of a team and take pride in helping others
+                level up while learning from those who can help me fill my own
+                knowledge gaps.
               </p>
             </div>
           </div>

@@ -142,10 +142,11 @@ function Resume() {
       title: 'Software Engineer',
       logo: logoFormidable,
       start: '2020',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear(),
-      },
+      end: '2022',
+      // end: {
+      //   label: 'Present',
+      //   dateTime: new Date().getFullYear(),
+      // },
     },
     {
       company: 'Synapse Studios',
@@ -165,8 +166,8 @@ function Resume() {
       company: 'Aerotek Staffing',
       title: 'Customer Service',
       logo: logoAerotek,
-      start: '2008',
-      end: '2011',
+      start: '2016',
+      end: '2018',
     },
   ]
 
