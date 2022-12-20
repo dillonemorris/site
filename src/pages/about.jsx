@@ -43,7 +43,7 @@ export default function About() {
         <title>About - Dillon Morris</title>
         <meta
           name="description"
-          content="I’m Dillon Morris. I live in New York City, where I design the future."
+          content="I’m Dillon Morris. I build apps with React and Typescript."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -87,24 +87,24 @@ export default function About() {
               </p>
               <p>
                 I am a developer specializing in React, Next and Typescript. I
-                also have experience in React Native, having worked extensively
-                on a fitness app at my previous company,{' '}
+                also have experience in React Native, having worked on a mobile
+                app app at a previous company,{' '}
                 <a
                   className="font-bold text-teal-600"
                   href={'https://www.synapsestudios.com'}
                 >
                   Synapse Studios
                 </a>
-                . Most recently, I got to wield and grow these skills at a
-                company called{' '}
+                . Most recently, I got to wield and grow my skills at{' '}
                 <a
                   className="font-bold text-teal-600"
                   href={'https://formidable.com/'}
                 >
                   Formidable
                 </a>
-                . I love being part of a team and take pride in helping others
-                level up while learning from those who can help me fill my own
+                , working on a React app and an E-Commerce (next.js) site . I
+                love being part of a team and take pride in helping others level
+                up while learning from those who can help me fill my own
                 knowledge gaps.
               </p>
             </div>
