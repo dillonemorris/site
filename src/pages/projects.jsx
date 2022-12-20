@@ -3,47 +3,58 @@ import Head from 'next/head'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
-import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoGems from '@/images/logos/gem.svg'
+import logoPortfolio2 from '@/images/logos/portfolio2.svg'
+import logoTypewise from '@/images/logos/typewise.svg'
+import logoPortfolio1 from '@/images/logos/portfolio1.svg'
+import logoWaterLog from '@/images/logos/water.svg'
 
 const projects = [
   {
-    name: 'Planetaria',
-    description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: logoPlanetaria,
+    name: 'Water Log',
+    description: 'A simple water intake tracker to help you stay hydrated.',
+    link: {
+      href: 'https://github.com/dillonemorris/water-log',
+      label: 'github.com',
+    },
+    logo: logoWaterLog,
   },
   {
-    name: 'Animaginary',
-    description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoAnimaginary,
+    name: 'UI Gems',
+    description: 'Bringing you the best of the best UI designs on the web. ',
+    link: {
+      href: 'https://github.com/dillonemorris/ui-gems',
+      label: 'github.com',
+    },
+    logo: logoGems,
   },
   {
-    name: 'HelioStream',
+    name: 'Portfolio site v2',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoHelioStream,
+      'A nifty looking portfolio site with cool shapes and fancy page transitions.',
+    link: {
+      href: 'https://github.com/dillonemorris/portfolio',
+      label: 'github.com',
+    },
+    logo: logoPortfolio2,
   },
   {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
+    name: 'Portfolio site v1',
+    description: 'A snappy portfolio site I designed and built from scratch.',
+    link: {
+      href: 'https://happy-mahavira-5cd669.netlify.app/',
+      label: 'Visit site',
+    },
+    logo: logoPortfolio1,
   },
   {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
+    name: 'Typewise',
+    description: 'A curated assortment of the best Google Fonts.',
+    link: {
+      href: 'https://github.com/dillonemorris/typewise',
+      label: 'github.com',
+    },
+    logo: logoTypewise,
   },
 ]
 
