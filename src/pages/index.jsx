@@ -226,7 +226,7 @@ function Photos() {
   return (
     <div className="mt-16 sm:mt-20">
       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image4, image1, image5, image2, image3].map((image, imageIndex) => (
+        {[image2, image1, image5, image4, image3].map((image, imageIndex) => (
           <div
             key={image.src}
             className={clsx(
