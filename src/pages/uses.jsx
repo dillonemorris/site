@@ -32,84 +32,80 @@ export default function Uses() {
         <title>Uses - Dillon Morris</title>
         <meta
           name="description"
-          content="Software I use, gadgets I love, and other things I recommend."
+          content="Software tools and gadgets I use, and other things that help me code."
         />
       </Head>
       <SimpleLayout
-        title="Software I use, gadgets I love, and other things I recommend."
-        intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
+        title="Software tools and gadgets I use, and other things that help me code."
+        intro="I wanted to create this list of things I use in case someone asks what my setup is like, and for the joy of sharing what tools I fancy. Here’s an up-to-date list of the things I use and recommend for software development."
       >
         <div className="space-y-20">
           <ToolsSection title="Workstation">
-            <Tool title="16” MacBook Pro, M1 Max, 64GB RAM (2021)">
-              I was using an Intel-based 16” MacBook Pro prior to this and the
-              difference is night and day. I’ve never heard the fans turn on a
-              single time, even under the incredibly heavy loads I put it
-              through with our various launch simulations.
+            <Tool title="14” MacBook Pro, M1 Pro, 32GB RAM (14-inch, 2021)">
+              The specs are wasted on me as I’m not much of a gear head but this
+              thing never shows signs of struggle. I’m very fortunate to call
+              this machine my own.
             </Tool>
-            <Tool title="Apple Pro Display XDR (Standard Glass)">
-              The only display on the market if you want something HiDPI and
-              bigger than 27”. When you’re working at planetary scale, every
-              pixel you can get counts.
+            <Tool title="LG 4K Monitor 32” UHD LED Display">
+              This big guy is all the screen real estate I need. I have it
+              mounted on an Ergotron – LX Single Monitor Arm.
             </Tool>
-            <Tool title="IBM Model M SSK Industrial Keyboard">
-              They don’t make keyboards the way they used to. I buy these any
-              time I see them go up for sale and keep them in storage in case I
-              need parts or need to retire my main.
+            <Tool title="Logitech ERGO K860 Wireless Split Keyboard">
+              I love this ergonomic keyboard. It’s a happy middle ground between
+              your typical flat keyboard and a completely split one. It didn’t
+              take much getting used to the slight split and the keys feel
+              great.
             </Tool>
-            <Tool title="Apple Magic Trackpad">
-              Something about all the gestures makes me feel like a wizard with
-              special powers. I really like feeling like a wizard with special
-              powers.
+            <Tool title="Capisco Chair by HÅG">
+              I try to stand at my desk as much as I can (laziness is a factor)
+              but I love this versatile chair. The design is beautiful, it’s
+              very easy on the eyes.
             </Tool>
-            <Tool title="Herman Miller Aeron Chair">
-              If I’m going to slouch in the worst ergonomic position imaginable
-              all day, I might as well do it in an expensive chair.
+            <Tool title="AirPods Pro 2">
+              I previously wore a pair of Bose QC35’s which are great but I
+              haven’t used those since getting the AirPods, mostly for comfort.
+              I wear them all day long for calls/meetings and like to have low
+              volume white noise going while coding/writing.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Development tools">
-            <Tool title="Sublime Text 4">
-              I don’t care if it’s missing all of the fancy IDE features
-              everyone else relies on, Sublime Text is still the best text
-              editor ever made.
+            <Tool title="Webstorm by JetBrains">
+              A couple of years ago a friend of mine turned me onto WebStorm and
+              I haven’t looked back. I had been using VSCode before but was
+              having some lag issues which I have not experienced since making
+              the switch. I also love the rename/refactoring capabilities.
             </Tool>
-            <Tool title="iTerm2">
-              I’m honestly not even sure what features I get with this that
-              aren’t just part of the macOS Terminal but it’s what I use.
+            <Tool title="DankMono typeface">
+              This has been my IDE’s typeface for several years. Branded as “a
+              typeface designed for coding aesthetes with modern displays in
+              mind,” it does not disappoint. Fun fact, the type designer is Phil
+              Pluckthun who I crossed paths with at Formidable Labs.
             </Tool>
-            <Tool title="TablePlus">
-              Great software for working with databases. Has saved me from
-              building about a thousand admin interfaces for my various projects
-              over the years.
+            <Tool title="Github Desktop">
+              After learning basic git commands a friend introduced me to this
+              user-friendly GUI and I’ve used it shamelessly since. I’ve never
+              been a super fast typer and as a visual learner this tool gives me
+              more confidence when performing git operations.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Design">
             <Tool title="Figma">
-              We started using Figma as just a design tool but now it’s become
-              our virtual whiteboard for the entire company. Never would have
-              expected the collaboration features to be the real hook.
+              I don’t do a ton of designing/prototyping these days, but when I
+              do, I love using Figma. Like many, I previously used Sketch (and
+              loved it) but I now prefer the convenience of prototyping in the
+              browser.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Productivity">
-            <Tool title="Alfred">
-              It’s not the newest kid on the block but it’s still the fastest.
-              The Sublime Text of the application launcher world.
+            <Tool title="Horo">
+              A simple and free countdown timer app for the Mac menu bar. I like
+              setting timers before a work bout, it tricks my easily distracted
+              brain into being locked in to the task at hand.
             </Tool>
-            <Tool title="Reflect">
-              Using a daily notes system instead of trying to keep things
-              organized by topics has been super powerful for me. And with
-              Reflect, it’s still easy for me to keep all of that stuff
-              discoverable by topic even though all of my writing happens in the
-              daily note.
-            </Tool>
-            <Tool title="SavvyCal">
-              Great tool for scheduling meetings while protecting my calendar
-              and making sure I still have lots of time for deep work during the
-              week.
-            </Tool>
-            <Tool title="Focus">
-              Simple tool for blocking distracting websites when I need to just
-              do the work and get some momentum going.
+            <Tool title="Mac Notes App">
+              I used to use Notion for note-taking, record keeping, etc., but
+              one day realized I didn’t need all the bells and whistles. I love
+              the simplicity of this app and use it almost daily.
             </Tool>
           </ToolsSection>
         </div>
