@@ -60,52 +60,45 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              I’m Dillon. I build apps with React and Typescript.
+              Helping people through technology is my mission.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                Creating quality software is my craft but I've always had
-                diverse interests outside of technology. I love sports. As a kid
-                I was obsessed with basketball and recently got back into it,
-                playing pick-up games at my gym. I’m also a huge golf nerd and
-                try to get out and play as much as I can. I’ve always had a
-                passion for music and have played the guitar since the 6th grade
-                (it doesn’t show). With these and other diverse interests,{' '}
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I'm able to find common ground with anyone and see things from
-                different perspectives.
-              </p>
-              <p>
-                I’m a former customer service professional and have ingrained
-                empathy for end users. I started in tech because that’s where I
-                felt I could have the biggest impact helping people. I love this
-                field because there is something new to learn every single day.
-                I try not to make too many assumptions based on previous
-                knowledge. You are never too good to go back to the drawing
-                board, to see things in a new light.
-              </p>
-              <p>
                 I am a developer specializing in React, Next and Typescript. I
                 also have experience in React Native, having worked on a mobile
-                app app at a previous company,{' '}
+                app at{' '}
                 <a
                   className="font-bold text-teal-600"
                   href={'https://www.synapsestudios.com'}
                 >
                   Synapse Studios
                 </a>
-                . Most recently, I got to wield and grow my skills at{' '}
+                . Most recently, I got to grow at{' '}
                 <a
                   className="font-bold text-teal-600"
                   href={'https://formidable.com/'}
                 >
                   Formidable
-                </a>
-                , working on a React app and an E-Commerce (next.js) site . I
-                love being part of a team and take pride in helping others level
-                up while learning from those who can help me fill my own
-                knowledge gaps.
+                </a>{' '}
+                as a consultant, working on a pair of projects at companies that
+                have global reach. I worked on a geo-spatial Data analysis app
+                before helping to migrate an E-Commerce site to more current
+                technologies. My biggest source of pride however is the frenetic
+                {/* eslint-disable-next-line react/no-unescaped-entities */}{' '}
+                wagging of this dog's tail after a nice long walk (pictured is
+                me and said good boy, Bowie).
+              </p>
+              <p>
+                I also take pride in helping others level up where I can, and{' '}
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                I'm a sponge for the teachings of those willing to fill my own
+                gaps. I’m a former customer service professional and have
+                ingrained empathy for people. Things move fast so my aim is to
+                challenge{' '}
+                {/* eslint-disable-next-line react/no-unescaped-entities */}
+                my own assumptions and consistently and honestly assess my own
+                abilities. I feel like I still have a lot to learn and hope that
+                feeling never goes away.
               </p>
             </div>
           </div>

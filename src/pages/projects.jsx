@@ -40,7 +40,8 @@ const projects = [
   },
   {
     name: 'Portfolio site v1',
-    description: 'A snappy portfolio site I designed and built from scratch.',
+    description:
+      'A snappy portfolio site I designed and built straight outta scratch.',
     link: {
       href: 'https://happy-mahavira-5cd669.netlify.app/',
       label: 'Visit site',
@@ -81,7 +82,7 @@ export default function Projects() {
       </Head>
       <SimpleLayout
         title="Things I’ve made growing my skills outside of work."
-        intro="Breakable toys created while	 deliberately working in a low-stakes environment where I can fail without consequence. Sometimes I’m experimenting with a new library or framework or just keeping my coding skills sharp. Feel free to peek at any of the code, it’s all open-source.
+        intro="Breakable toys created while	deliberately working in a low-stakes environment where I can fail without real consequence. Sometimes I’m experimenting with a new library or framework or just keeping my coding (nunchuk) skills sharp. Feel free to peek at any of the code, it’s all open-source.
 "
       >
         <ul

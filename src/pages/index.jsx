@@ -251,9 +251,7 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>
-          Dillon Morris - Software engineer, designer, and React expert
-        </title>
+        <title>Dillon Morris likes to write code on a team</title>
         <meta
           name="description"
           content="I’m Dillon, a software engineer and designer based in Phoenix."
@@ -262,13 +260,14 @@ export default function Home({ articles }) {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software engineer, designer, and React expert.
+            Dillon is learning, growing, and sometimes coding.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Dillon Morris, a software engineer based in Phoenix. Writing
-            quality component APIs is my craft. I have a passion for user
-            interface design and enjoy collaborating with product and design
-            teams.
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
+            Dillon Morris is a "self-taught" software engineer based in Phoenix.
+            Writing code is his craft, React and Typescript are his current
+            tools of focus. He enjoys collaborating, and thrives as one member
+            of a team.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
