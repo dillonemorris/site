@@ -211,8 +211,13 @@ function Resume() {
           </li>
         ))}
       </ol>
-      {/*TODO: Update Resume and make this work*/}
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+      <Button
+        href="resume.png"
+        target="blank"
+        download="Dillon Morris Resume 2023"
+        variant="secondary"
+        className="group mt-6 w-full"
+      >
         Download Resume
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
@@ -251,7 +256,7 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Dillon Morris likes to write code on a team</title>
+        <title>Dillon is learning, growing, and sometimes coding.</title>
         <meta
           name="description"
           content="I’m Dillon, a software engineer and designer based in Phoenix."
@@ -264,7 +269,7 @@ export default function Home({ articles }) {
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            Dillon Morris is a "self-taught" software engineer based in Phoenix.
+            Dillon Morris is a self-taught software engineer based in Phoenix.
             Writing code is his craft, React and Typescript are his current
             tools of focus. He enjoys collaborating, and thrives as one member
             of a team.
