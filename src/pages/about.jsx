@@ -97,7 +97,7 @@ export default function About() {
                 challenge{' '}
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
                 my own assumptions and consistently and honestly assess my own
-                abilities. I feel like I still have a lot to learn and hope that
+                abilities. I still feel I have a lot to learn and hope that
                 feeling never goes away.
               </p>
             </div>

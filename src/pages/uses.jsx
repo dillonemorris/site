@@ -79,8 +79,14 @@ export default function Uses() {
             <Tool title="DankMono typeface">
               This has been my IDE’s typeface for several years. Branded as “a
               typeface designed for coding aesthetes with modern displays in
-              mind,” it does not disappoint. Fun fact, the type designer is Phil
-              Pluckthun who I crossed paths with at Formidable Labs.
+              mind,” it does not disappoint. Fun fact, the type designer is{' '}
+              <a
+                href="https://philpl.gumroad.com/"
+                className="font-bold text-teal-600"
+              >
+                Phil Pluckthun
+              </a>{' '}
+              who I crossed paths with at Formidable Labs.
             </Tool>
             <Tool title="Github Desktop">
               After learning basic git commands a friend introduced me to this
@@ -104,9 +110,9 @@ export default function Uses() {
               brain into being locked in to the task at hand.
             </Tool>
             <Tool title="Mac Notes App">
-              I used to use Notion for note-taking, record keeping, etc., but
-              one day realized I didn’t need all the bells and whistles. I love
-              the simplicity of this app and use it almost daily.
+              I previously used Notion for note-taking, record keeping, etc.,
+              but one day realized I didn’t need all of its bells and whistles.
+              I love the simplicity of this app and use it almost daily.
             </Tool>
           </ToolsSection>
         </div>

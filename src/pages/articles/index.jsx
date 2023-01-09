@@ -41,11 +41,11 @@ export default function ArticlesIndex({ articles }) {
         <title>Articles - Dillon Morris</title>
         <meta
           name="description"
-          content="A growing collection of my thoughts on front-end development, web design, and more, collected in chronological order."
+          content="A collection of my thoughts on front-end development, web design, and more, arranged in chronological order."
         />
       </Head>
       <SimpleLayout
-        title="Writing on web development, design, and programming with Javascript."
+        title="Writing on web development, design, and programming."
         intro="A collection of my thoughts on front-end development, web design, and more, arranged in chronological order."
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
