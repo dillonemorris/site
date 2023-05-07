@@ -45,8 +45,8 @@ export default function ArticlesIndex({ articles }) {
         />
       </Head>
       <SimpleLayout
-        title="Writing on web development, design, and programming."
-        intro="A collection of my thoughts on front-end development, web design, and more, arranged in chronological order."
+        title="Exploring the World of Web Development, Design, and Programming"
+        intro="From React to design, join me as I explore the world of web development and share insights, tips, and tutorials to help you level up your skills."
       >
         <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
           <div className="flex max-w-3xl flex-col space-y-16">

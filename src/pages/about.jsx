@@ -43,7 +43,7 @@ export default function About() {
         <title>About - Dillon Morris</title>
         <meta
           name="description"
-          content="I’m Dillon Morris. I build apps with React and Typescript."
+          content="Empowering people through technology is my mission."
         />
       </Head>
       <Container className="mt-16 sm:mt-32">
@@ -60,45 +60,23 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Helping people through technology is my mission.
+              Empowering people through technology is my mission.
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                I am a developer specializing in React, Next and Typescript. I
-                also have experience in React Native, having worked on a mobile
-                app at{' '}
-                <a
-                  className="font-bold text-teal-600"
-                  href={'https://www.synapsestudios.com'}
-                >
-                  Synapse Studios
-                </a>
-                . Most recently, I got to grow at{' '}
-                <a
-                  className="font-bold text-teal-600"
-                  href={'https://formidable.com/'}
-                >
-                  Formidable
-                </a>{' '}
-                as a consultant, working on a pair of projects at companies that
-                have global reach. I worked on a geo-spatial Data analysis app
-                before helping to migrate an E-Commerce site to more current
-                technologies. My biggest source of pride however is the frenetic
-                {/* eslint-disable-next-line react/no-unescaped-entities */}{' '}
-                wagging of this dog's tail after a nice long walk (pictured is
-                me and said good boy, Bowie).
-              </p>
-              <p>
-                I also take pride in helping others level up where I can, and{' '}
+                As a developer specializing in React, Next and Typescript, I
+                bring extensive experience to the table, having worked on
+                various projects including a geo-spatial data analysis app and
+                an e-commerce site migration at companies with global reach. In
+                addition to technical skills, I have a customer service
+                background which has helped me develop strong empathy and
+                communication skills, making me a valuable collaborator on any
+                team. I take pride in continuously learning and challenging {''}
                 {/* eslint-disable-next-line react/no-unescaped-entities */}
-                I'm a sponge for the teachings of those willing to fill my own
-                gaps. I’m a former customer service professional and have
-                ingrained empathy for people. Things move fast so my aim is to
-                challenge{' '}
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                my own assumptions and consistently and honestly assess my own
-                abilities. I still feel I have a lot to learn and hope that
-                feeling never goes away.
+                myself, and I'm passionate about sharing my knowledge and
+                helping others level up. And of course, my furry friend Bowie
+                keeps me grounded and reminds me to take breaks and enjoy the
+                little things in life.
               </p>
             </div>
           </div>

@@ -75,15 +75,11 @@ export default function Projects() {
     <>
       <Head>
         <title>Projects - Dillon Morris</title>
-        <meta
-          name="description"
-          content="Things I’ve made outside of work, for fun and for growth"
-        />
+        <meta name="description" content="My Playground of Tech Adventures" />
       </Head>
       <SimpleLayout
-        title="Things I’ve made growing my skills outside of work."
-        intro="Breakable toys created while	deliberately working in a low-stakes environment where I can fail without real consequence. Sometimes I’m experimenting with a new library or framework or just keeping my coding (nunchuk) skills sharp. Feel free to peek at any of the code, it’s all open-source.
-"
+        title="My Playground of Tech Adventures"
+        intro="Here, you'll find a collection of my side projects that showcase my passion for exploring new technologies and building exciting things. From tinkering with cutting-edge frameworks to creating playful web apps, each project represents a unique opportunity for me to learn and grow as a developer."
       >
         <ul
           role="list"

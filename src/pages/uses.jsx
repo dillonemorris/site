@@ -36,83 +36,120 @@ export default function Uses() {
         />
       </Head>
       <SimpleLayout
-        title="Software tools and gadgets I use, and other things that help me code."
-        intro="I wanted to create this list of things I use in case someone asks what my setup is like (still waiting),
-         and for the sheer joy of sharing (bragging about) what tools I fancy. Here’s an up-to-date list of the curious things I use and recommend."
+        title="My Essential Digital Toolkit"
+        intro="As a tech enthusiast, I am often asked about the tools I use to power my productivity and creativity. That's why I've compiled a comprehensive list of my favorite tech tools and gadgets. From my trusty ergonomic keyboard to the sleek and powerful laptop that fuels my coding sessions, this page is a peek into my tech arsenal. Discover the tools that keep me in the zone and see if any of them might enhance your own tech setup."
       >
         <div className="space-y-20">
           <ToolsSection title="Workstation">
             <Tool title="14” MacBook Pro, M1 Pro, 32GB RAM (14-inch, 2021)">
-              The specs are wasted on me as I’m not much of a gear head but this
-              thing never shows signs of struggle. I’m very fortunate to call
-              this machine my own.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              While I may not be a gearhead, I'm constantly amazed by how
+              effortlessly it handles everything I throw at it. I feel
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              incredibly lucky to have this tool in my arsenal and can't imagine
+              getting my work done without it.
             </Tool>
             <Tool title="LG 4K Monitor 32” UHD LED Display">
-              This big guy is all the screen real estate I need. I have it
-              mounted on an Ergotron – LX Single Monitor Arm.
+              This big guy provides me with all the screen real estate I need to
+              get my work done efficiently. Plus, I have it mounted on an
+              Ergotron – LX Single Monitor Arm, which means I can easily adjust{' '}
+              {''}
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              the height and angle to suit my preferences.
             </Tool>
             <Tool title="Logitech ERGO K860 Wireless Split Keyboard">
-              I love this ergonomic keyboard. It’s a happy middle ground between
-              your typical flat keyboard and a completely split one. It didn’t
-              take much getting used to the slight split and the keys feel
-              great.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              With its ergonomic design, it's like a custom fit for my hands.
+              {/* eslint-disable-next-line react/no-unescaped-entities */} {''}
+              It's not too flat, not too split - it's just right. And the keys?
+              They feel like butter. Typing has never been so smooth and
+              effortless.
             </Tool>
             <Tool title="Capisco Chair by HÅG">
-              I try to stand at my desk as much as I can (laziness is a factor)
-              but I love this versatile chair. The design is beautiful, it’s
-              very easy on the eyes.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              While I try to stand at my desk as much as possible, I can't
+              resist the comfort and versatility this beauty provides. Its sleek
+              design is easy on the eyes, making it a perfect fit for my
+              workspace.
             </Tool>
             <Tool title="AirPods Pro 2">
-              I previously wore a pair of Bose QC35’s which are great but I
-              haven’t used those since getting the AirPods, mostly for comfort.
-              I wear them all day long for calls/meetings and like to have low
-              volume white noise going while coding/writing.
+              My AirPods Pro 2 have been a game changer for me. These AirPods
+              are so comfortable that I can wear them all day long for calls,{' '}
+              {''}
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              meetings, and even when I'm deep in coding mode with some
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              low-volume white noise in the background. It's the perfect blend{' '}
+              {''}
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              of convenience, comfort, and quality sound that I didn't even know
+              I needed until I tried them out.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Development tools">
             <Tool title="Webstorm by JetBrains">
-              A couple of years ago a friend of mine turned me onto WebStorm and
-              I haven’t looked back. I had been using VSCode before but was
-              having some lag issues which I have not experienced since making
-              the switch. I also love the rename/refactoring capabilities.
+              I owe a lot to my friend who introduced me to WebStorm - this IDE
+              has truly become my coding companion. From the moment I opened it,
+              I was hooked. The smooth performance and lightning-fast
+              responsiveness blew me away, especially after experiencing lag
+              issues with other IDEs. The refactor/renaming tools in WebStorm
+              make code maintenance a breeze, saving me precious time and
+              energy.
             </Tool>
             <Tool title="DankMono typeface">
-              This has been my IDE’s typeface for several years. Branded as “a
-              typeface designed for coding aesthetes with modern displays in
-              mind,” it does not disappoint. Fun fact, the type designer is{' '}
-              <a
-                href="https://philpl.gumroad.com/"
-                className="font-bold text-teal-600"
-              >
-                Phil Pluckthun
-              </a>{' '}
-              who I crossed paths with at Formidable Labs.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              Dank Mono is the typeface I use in my IDE and it's honestly a game
+              changer. The font is easy on the eyes and the ligatures are a nice
+              touch. It makes coding a more enjoyable experience. Overall, Dank
+              Mono is a great choice for anyone looking for a stylish and
+              functional typeface in their IDE.
             </Tool>
             <Tool title="Github Desktop">
-              After learning basic git commands a friend introduced me to this
-              user-friendly GUI and I’ve used it shamelessly since. I’ve never
-              been a super fast typer and as a visual learner this tool gives me
-              more confidence when performing git operations.
+              Even though I know how to use Git from the command line, I find
+              that the Desktop interface gives me more confidence and visual
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              clarity when performing Git operations. It's especially useful for
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              reviewing changes and committing code. Plus, it's user-friendly
+              and saves me time compared to typing out every command.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Design">
             <Tool title="Figma">
-              I don’t do a ton of designing/prototyping these days, but when I
-              do, I love using Figma. Like many, I previously used Sketch (and
-              loved it) but I now prefer the convenience of prototyping in the
-              browser.
+              Figma is my go-to tool for designing and prototyping. As a
+              web-based
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              platform, it's easy to collaborate with team members and clients,
+              and I love that I can access my designs from any device with an
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              internet connection. Plus, Figma's built-in prototyping
+              capabilities make it easy to create interactive mockups and get
+              feedback quickly.
             </Tool>
           </ToolsSection>
           <ToolsSection title="Productivity">
             <Tool title="Horo">
-              A simple and free countdown timer app for the Mac menu bar. I like
-              setting timers before a work bout, it tricks my easily distracted
-              brain into being locked in to the task at hand.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              Horo is my go-to countdown timer app for Mac. It's a simple and
+              free tool that lives in the menu bar, so I can easily set timers
+              for work sprints or breaks. I especially love using it for those
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              days when I'm feeling particularly scatterbrained - setting a
+              timer helps me stay focused and accomplish my tasks without
+              getting sidetracked.
             </Tool>
             <Tool title="Mac Notes App">
-              I previously used Notion for note-taking, record keeping, etc.,
-              but one day realized I didn’t need all of its bells and whistles.
-              I love the simplicity of this app and use it almost daily.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              When it comes to taking notes, I've tried them all – Evernote,
+              Google Keep, OneNote, you name it. But eventually, I found myself
+              gravitating back to the good old-fashioned Notes app on my Mac.
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              It's simple, reliable, and gets the job done without any fuss.
+              Plus, I love the integration with iCloud, so my notes are always
+              {/* eslint-disable-next-line react/no-unescaped-entities */}
+              synced across all my devices. Whether I'm jotting down a quick
+              idea or outlining a new project, the Mac Notes app has become my
+              go-to tool.
             </Tool>
           </ToolsSection>
         </div>
