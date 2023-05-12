@@ -1,0 +1,547 @@
+import { ArticleLayout } from '@/components/ArticleLayout';
+import { InfoAlert } from "@/components/InfoAlert";
+import Image from 'next/future/image'
+import createNote from './1-createNote-mutation.png'
+import createNoteSuccess from './2-createNote-success.png'
+import notes from './3-notes-query.png'
+import notesSuccess from './4-notes-query-success.png'
+
+export const meta = {
+  author: 'Dillon Morris',
+  date: '2023-05-12',
+  title: 'From Frontend to Backend: Building a Full-Stack React App with Apollo and GraphQL',
+  description:
+    "In this post we'll write a basic CRUD API using Apollo and GraphQL and connect it to a React frontend.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+This post will cover writing a basic CRUD API using Apollo and GraphQL and connecting it to a React frontend. This will be relevant to web developers who want to learn how to create a full-stack application using modern technologies. By using Apollo and GraphQL, we can create APIs that are efficient, flexible, and easy to maintain. In this blog post, we'll walk through the steps of building a basic CRUD API using Apollo and GraphQL, and show how to connect it to a React frontend.
+
+I've created a [git repo](https://github.com/dillonemorris/fullstack-tutorial) with the final application, feel free to use it as a reference.
+
+## What is GraphQL?
+
+GraphQL is a programming language and execution engine that was created by Facebook to simplify the process of requesting data from servers to clients by providing a more efficient, powerful, and adaptable option to REST APIs.
+
+REST and GraphQL are both API architectural patterns used for building web applications, but they have some differences:
+
+1. Data fetching: REST APIs use multiple endpoints to fetch different types of data, while GraphQL APIs use a single endpoint to retrieve all the requested data in one go.
+2. Data shape: REST APIs have a fixed data shape and return all the fields defined in the server, while GraphQL APIs allow clients to specify the data shape they want to receive, which can improve performance and reduce overfetching and underfetching.
+3. Caching: REST APIs rely on HTTP caching mechanisms to improve performance, while GraphQL APIs have a built-in caching mechanism that caches the responses at the field-level, which provides more granular caching control.
+4. Versioning: REST APIs often require versioning to manage changes to the API, while GraphQL APIs can add new fields without affecting existing queries and clients.
+
+In general, GraphQL offers greater adaptability and efficiency in data retrieval, whereas REST provides a well-established and commonly used architectural design with strong tooling support. The decision between GraphQL and REST ultimately hinges on the specific requirements of the project, but GraphQL's benefits in terms of adaptability, efficiency, and developer efficiency are contributing to its growing popularity as a preferred option for creating modern APIs.
+
+### Schema-first development
+In this post, we’ll be using [Apollo](https://www.apollographql.com/). Apollo is a set of tools and libraries for building and consuming GraphQL APIs. Apollo strongly advocates for “schema-first development” as a best practice for building GraphQL APIs. GraphQL schema-first development is an approach to building GraphQL APIs that emphasizes creating a clear and comprehensive schema definition as the starting point for development. This schema-first approach focuses on designing the API schema based on the requirements of the client applications that will consume it, rather than on the underlying data sources or implementation details.
+
+Apollo Server supports schema-first development by providing features like automatic code generation from the schema and type validation.
+
+
+## Setting up the backend
+
+Now that we know what GraphQL is and why we’d want to use it, let’s dive in to creating our backend. In the spirit of “schema-first development” it’s only fitting that we start by writing the schema for our GraphQL API. In the remainder of this section, we’ll define the types, queries, and mutations that our API will support.
+
+We can define our schema using the GraphQL Schema Definition Language (SDL), which is a simple syntax for defining GraphQL schemas.
+
+<InfoAlert>
+    Since our primary goal is to learn how to set up a GraphQL backend, rather than create a complex or revolutionary application, we’re going to develop a simple note-taking app.
+</InfoAlert>
+
+Let’s create our first type, which will be the note type:
+
+```graphql
+type Note {
+  id: ID!
+  title: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+```
+
+This schema defines a `Note` type with fields for `id`, `title`, `content`, `createdAt`, and `updatedAt`. As you can see, we’re assigning our GraphQL schema to a constant called `typeDefs` and using the gql tagged template literal.
+
+Okay, so we have our `Note` type, which is the backbone of our GraphQL schema. Next, we’ll want to create a `Query` type. The shape of this schema will hopefully make more sense when we move onto the next section concerning resolvers, but for now, let’s copy/paste the following `Query` type into our schema definition:
+
+```graphql
+type Note {
+  id: ID!
+  title: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  notes: [Note!]!
+  noteById(id: ID!): Note
+}
+```
+
+The Query type has two fields: `notes`, which returns a list of all notes, and `noteById`, which returns a single note by its `id`. In the next section, we’ll write resolvers for each of the fields in this schema. Before we move on to resolvers, let’s include a `Mutation` type:
+
+```graphql
+type Note {
+  id: ID!
+  title: String!
+  content: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Query {
+  notes: [Note!]!
+  noteById(id: ID!): Note
+}
+
+type Mutation {
+  createNote(
+    title: String!,
+    content: String!
+  ): Note!
+
+  updateNote(
+    id: ID!,
+    title: String!,
+    content: String!
+  ): Note!
+
+  deleteNote(
+    id: ID!
+  ): Boolean!
+}
+```
+
+The `Mutation` type has three fields for creating, updating, and deleting notes. `createNote` takes a `title` and `content` argument and returns the newly created note. `updateNote` takes an `id`, `title`, and `content` argument and returns the updated note. `deleteNote` takes an `id` argument and returns a boolean indicating whether the note was successfully deleted.
+
+Now that we have our schema in place, we can write the corresponding resolvers. First, let’s learn more about what resolvers are and what they do.
+
+### Resolvers
+
+Resolvers in GraphQL are functions that resolve the data that corresponds to a specific field in a GraphQL schema. In other words, they are the functions that are responsible for fetching the data for a particular field in a GraphQL query. The resolver receives arguments, such as the parent object and any variables passed in the query, and returns the resolved data for that field. They can also interact with external data sources or APIs to retrieve the data needed. The main purpose of resolvers is to provide flexibility in data fetching, allowing developers to retrieve data from multiple sources and manipulate it in various ways before returning it to the client.
+
+Let’s create our two `Query` resolvers, `notes` and `noteById`:
+
+```js
+const notes = [
+  {
+    id: "1",
+    title: "First Note",
+    content: "This is the first note.",
+    createdAt: new Date("2022-01-01T00:00:00Z"),
+    updatedAt: new Date("2022-01-01T00:00:00Z"),
+  },
+  {
+    id: "2",
+    title: "Second Note",
+    content: "This is the second note.",
+    createdAt: new Date("2022-01-02T00:00:00Z"),
+    updatedAt: new Date("2022-01-02T00:00:00Z"),
+  },
+];
+
+const resolvers = {
+  Query: {
+    notes: () => notes,
+    noteById: (_, { id }) => notes.find(note => note.id === id),
+  },
+};
+```
+
+<InfoAlert>
+In this code example, we’re using mock data to simulate the behavior of a database. In a real-world scenario, these resolvers would be communicating with a live database to retrieve or update data. The implementation details of how the resolvers communicate with the database would depend on the specific database and database management system being used. However, the logic for resolving GraphQL queries and mutations would remain largely the same regardless of the underlying database technology.
+</InfoAlert>
+
+Our query resolvers are simply the functions responsible for resolving the data associated with a particular query field. So when the client calls `noteById` for example, the function stored at that field will be called, taking in the arguments provided in the query. In the case of `noteById` the query resolver will take in an argument `id` and return the note with that `id` found in the `notes` array. We’ll get to see this in action when we test the server with Apollo Playground. For now, let’s continue writing our resolvers.
+
+Next we’ll need to write some mutation resolvers. In GraphQL, a mutation resolver is a function that is responsible for handling write operations, such as creating, updating, or deleting data on the server. Mutations are used when you want to modify the data on the server, and they are similar to queries, except that they are executed with the intent of modifying data instead of fetching it.
+
+Let’s add a mutation resolver for creating a note:
+
+```js
+const resolvers = {
+  Query: {
+    notes: () => notes,
+    noteById: (_, { id }) => notes.find(note => note.id === id),
+  },
+  Mutation: {
+    createNote: (_, { title, content }) => {
+      const newNote = {
+        id: String(notes.length + 1),
+        title,
+        content,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      notes.push(newNote);
+      return newNote;
+    },
+  },
+};
+```
+
+Here we have a mutation to create a new note. The mutation resolver for this operation will take in input arguments for the note’s `title`, and `content`, and then push a new note item to the `notes` array. By convention, the resolver will then return the newly created note object to the client. As you can see, the `createNote` is following the same fields as the schema we defined earlier.
+
+Now, let’s add our `updateNote` mutation resolver:
+
+```js
+const resolvers = {
+  Query: {
+    notes: () => notes,
+    noteById: (_, { id }) => notes.find(note => note.id === id),
+  },
+  Mutation: {
+    createNote: (_, { title, content }) => {
+      const newNote = {
+        id: String(notes.length + 1),
+        title,
+        content,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      notes.push(newNote);
+      return newNote;
+    },
+    updateNote: (_, { id, title, content }) => {
+      const index = notes.findIndex(note => note.id === id);
+      if (index === -1) {
+        throw new Error(`Note with ID ${id} not found`);
+      }
+      const updatedNote = {
+        ...notes[index],
+        title,
+        content,
+        updatedAt: new Date(),
+      };
+      notes[index] = updatedNote;
+      return updatedNote;
+    },
+  },
+};
+```
+
+This is a GraphQL mutation resolver function that updates a note with the specified `id`. There’s a lot going on here so let’s breakdown what this resolver does:
+
+1. The function takes in three arguments: the parent object (which is not used in this resolver), an object containing the `id`, `title`, and `content` fields, and the context object (also not used in this resolver).
+2. The `findIndex()` method is called on the `notes` array to find the index of the note with the specified `id`.
+3. If the note is not found (i.e. index is -1), the function throws an error with a message indicating that the note with the specified ID was not found.
+4. If the note is found, a new object `updatedNote` is created by spreading the existing note at that index, and updating the `title`, `content`, and `updatedAt` fields with the values provided in the mutation input.
+5. The `notes` array is updated at the specified index with the `updatedNote` object.
+6. Finally, the `updatedNote` object is returned as the result of the mutation.
+
+Overall, this resolver function performs an update operation on a note object in the `notes` array, and returns the updated note object as the result of the mutation.
+
+Finally, let’s add a mutation resolver for deleting a note:
+
+```js
+const resolvers = {
+  Query: {
+    notes: () => notes,
+    noteById: (_, { id }) => notes.find(note => note.id === id),
+  },
+  Mutation: {
+    createNote: (_, { title, content }) => {
+      const newNote = {
+        id: String(notes.length + 1),
+        title,
+        content,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      };
+      notes.push(newNote);
+      return newNote;
+    },
+    updateNote: (_, { id, title, content }) => {
+      const index = notes.findIndex(note => note.id === id);
+      if (index === -1) {
+        throw new Error(`Note with ID ${id} not found`);
+      }
+      const updatedNote = {
+        ...notes[index],
+        title,
+        content,
+        updatedAt: new Date(),
+      };
+      notes[index] = updatedNote;
+      return updatedNote;
+    },
+    deleteNote: (_, { id }) => {
+      const index = notes.findIndex(note => note.id === id);
+      if (index === -1) {
+        return false;
+      }
+      notes.splice(index, 1);
+      return true;
+    },
+  },
+};
+```
+
+This resolver function receives the `id` of the note to be deleted as an argument. The function first searches for the index of the note with the given `id` using the `findIndex()` method. If the note is not found (index is -1), the function returns false.
+
+If the note is found, the function uses the `splice()` method to remove the note from the `notes` array. The `splice()` method removes the element at the specified index. Finally, the function returns true to indicate that the deletion was successful.
+
+### Setting up Apollo Server
+
+Now that we have our GraphQL schema in place as well as the queries and mutations needed to resolve operations, let’s set up our Apollo server.
+
+<InfoAlert>
+    You can clone [the git repo](https://github.com/dillonemorris/fullstack-tutorial) and follow the steps in the `README` for running the server. If you're setting up your app from scratch, I'd recommend creating separate `server` and `client` directories within your application in order to separate your client and server code. The following steps should be completed within your `server` directory.
+</InfoAlert>
+
+To set up our GraphQL server using Apollo Server, follow these steps:
+1. Install the necessary dependencies:
+* `apollo-server`: This is the core package for building a GraphQL server with Apollo Server.
+* `graphql`: This is the GraphQL implementation for JavaScript.
+You can install these dependencies using a package manager like npm or yarn. For example, run the following command in your terminal:
+
+```
+npm install apollo-server graphql
+```
+
+2. Initialize an instance of Apollo Server:
+* In our Node.js application, create an instance of ApolloServer with the `typeDefs` and `resolvers` we defined.
+
+```js
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+```
+
+3. Start the server:
+* Call the `listen` method on our `server` to start the server and listen for incoming requests.
+
+```js
+server.listen().then(() => {
+  console.log(`Server is running at http://localhost:4000`);
+});
+```
+
+Once we’ve followed these steps, we should have a fully functional GraphQL server that we can use to query our data.
+
+### Testing our server with Apollo Playground
+
+Now that we have our server running, let’s run some test queries and mutations using Apollo Playground. Apollo Playground is a web-based tool that we can use to interact with our GraphQL API.
+
+Here's how we can use it to test our notes API backend:
+1. Open your browser and navigate to http://localhost:4000 where our Apollo server is running.
+2. Once you reach the server, you will see a screen that has the Apollo Playground. On the left side of the screen, there is a panel where we can write our queries, mutations, and subscriptions.
+3. First, let’s write a GraphQL mutation. Here, we’ll write a mutation to create a new note:
+
+<Image src={createNote} alt='createNote Apollo Playground screenshot' />
+
+Notice that we included a JSON object with our `title` and `content` values in the "Variables" panel at the bottom.
+
+<InfoAlert>
+    Instead of manually writing this mutation, while in the left panel, click the "plus" icon associated with our `createNote` mutation to have it generated for you.
+</InfoAlert>
+
+4. After writing the mutation, click on the "Play" button at the top center of the screen.
+5. The result of the mutation will be shown on the right side of the screen. Let’s check whether the mutation was successful or not:
+
+<Image src={createNoteSuccess} alt='createNoteSuccess Apollo Playground screenshot' />
+
+6. Great! The response of the mutation was our newly created note which means our mutation was successful and the new note has been added to the “database.”
+7. Now, let’s see if we can query for our newly created note by running our `notes` query:
+
+<Image src={notes} alt='notes Apollo Playground screenshot' />
+
+After running our notes query, we should get back a list of notes which includes the original mock data in addition to our newly created note:
+
+<Image src={notesSuccess} alt='notesSuccess Apollo Playground screenshot' />
+
+That's it! Using Apollo Playground, we can easily test our GraphQL API backend and make sure it is functioning correctly.
+
+## Connecting the frontend
+
+Now that we have our backend in place, let’s move on to the client-side of our application. In the following sections, we’ll be setting up our frontend to interact with our GraphQL API by using a tool called Apollo Client.
+
+[Apollo Client](https://www.apollographql.com/docs/react) is a powerful and flexible library that makes it easy to work with GraphQL APIs from your frontend application.
+
+### Setting up Apollo client
+In this section we’ll setup our Apollo client and connect it to our API.
+
+<InfoAlert>
+    Remember, you can clone [this git repo](https://github.com/dillonemorris/fullstack-tutorial) and follow the steps in the `README` for running the app. If you're setting up your app from scratch, the following steps should be completed within a separate `client` directory.
+</InfoAlert>
+
+First, let’s install the necessary dependencies:
+
+```
+npm install graphql @apollo/client react react-dom react-scripts
+```
+
+Next, we’ll initialize the Apollo client like so:
+
+```js
+const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+  cache: new InMemoryCache(),
+})
+```
+
+<InfoAlert>
+    Note that the `uri` we provided to `ApolloClient` matches the uri our server runs at, localhost: 4000. Whenever we're running our client app, we'll want to simultaneously run our server in a separate terminal window so that we can make requests to it.
+</InfoAlert>
+
+Next, we’ll wrap our React app with the ApolloProvider component, making the client available throughout the component tree:
+
+```js
+root.render(
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+)
+```
+
+These few steps are all we need to do to start running queries and mutations from our client.
+
+### Fetching notes with useQuery
+Let’s write our first query from our React app and display the data that is returned. To make a query, we can use the Apollo Client provided hook, `useQuery`:
+
+```js
+import { gql, useQuery } from '@apollo/client'
+
+const GET_NOTES = gql`
+  query GetNotes {
+    notes {
+      id
+      title
+      content
+    }
+  }
+`
+
+export const NotesList = () => {
+  const { loading, data } = useQuery(GET_NOTES)
+
+  if (loading) {
+    return <h2>...Loading</h2>
+  }
+
+  return (
+    <ul>
+      {data.notes.map((note) => (
+        <li>
+          <h3>{note.title}</h3>
+          <p>{note.content}</p>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+The API of `useQuery` is quite simple. The `useQuery` hook takes two arguments: the first argument is the GraphQL query that you want to execute, and the second argument is an options object that you can use to configure the behavior of the query. For our purposes, we’re only passing the required first argument, the GraphQL query we want to execute.
+
+When we call the `useQuery` hook, it returns an object with three properties: `data`, `loading`, and `error`. The `data` property contains the result of the query, and is undefined until the query has finished loading. The `loading` property is a boolean value that is true while the query is still loading. The `error` property contains any errors that occurred during the query. The fact that `useQuery` handles these states is not an insignificant feature.
+
+Typically, as a front end developer, if you wanted to display loading and error states during data fetching, these “states” would need to be handled manually. For example, instead of `useQuery` handling our loading and error states, we could implement them with our own `useState` hook(s). However, this approach can be time-consuming and error-prone. Not only do we need to set up these 2 individual states, which requires more lines of code, we now need to worry about updating them. For example, if an error occurs during data fetching, that error needs to be reset before the user retries the request, or else it will be stale.
+
+Aside from handling these tricky state management issues, another key feature of Apollo Client is its cache. When you make a query, the results are automatically cached by the client. If you make the same query again, the client will return the cached results instead of making another request to the server. This can greatly improve the performance of our application, as it reduces the amount of network traffic and server load.
+
+### Adding a note with useMutation
+
+Alright, so we’re able to fetch our notes, and we learned a thing or two about `useQuery` along the way. Now, we’ll want to provide a way for users to add a new note. For that purpose, we can leverage `useQuery`’s counterpart, `useMutation`.
+We'll also need to provide a form so that the user can provide their note's title and content:
+
+```js
+import { gql, useMutation } from '@apollo/client'
+
+const ADD_NOTE_MUTATION = gql`
+  mutation AddNote($title: String!, $content: String!) {
+    createNote(title: $title, content: $content) {
+      title
+      content
+      createdAt
+    }
+  }
+`
+
+export const AddNoteForm = () => {
+  const [addNote, { loading, error }] = useMutation(ADD_NOTE_MUTATION)
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const formData = new FormData(event.target)
+    const title = formData.get('title')
+    const content = formData.get('content')
+
+    await addNote({
+      variables: { title, content },
+    })
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Title:
+        <input type="text" name="title" />
+      </label>
+      <br />
+      <label>
+        Content:
+        <textarea name="content" />
+      </label>
+      <br />
+      <button type="submit" disabled={loading}>
+        {loading ? 'Adding...' : 'Add Note'}
+      </button>
+      {error && <p>Error adding note: {error.message}</p>}
+    </form>
+  )
+}
+```
+
+Here we're defining a mutation called `ADD_NOTE` using the gql function from `@apollo/client`. The mutation takes two variables, `title` and `content`, and returns the newly created note's `id`, `title`, `content`, and `createdAt` timestamp.
+
+The `useMutation` hook is used to create a function called `addNote`, which is used to execute the mutation. The hook returns an array containing `addNote` and an object containing the `loading` and `error` states. The variables option is used to pass in the `title` and `content` state from the form.
+
+When the form is submitted, the `handleSubmit` function is called, which calls the `addNote` function with the variables and submits the mutation to the backend. The `setTitle` and `setContent` functions are called to reset the form fields to their initial values.
+
+If there is an error during the mutation, the error message is displayed below the form.
+
+### Refetching our GetNotes query
+
+Alright, so we're able to add a new note from our React application. However, you may notice one thing that could be improved. You may have noticed that when we add a new note, it does not appear in our notes list until you refresh the page. This is not ideal. Luckily, the `useMutation` hook provides a way for us to solve this:
+
+```js
+  const [addNote, { loading, error }] = useMutation(ADD_NOTE_MUTATION, {
+    refetchQueries: [
+      'GetNotes', // Query name
+    ],
+  })
+```
+
+We've altered our call to `useMutation` slightly by providing an option of `refetchQueries`. We are including the string `'GetNotes'` in this `refetchQueries` array. `'GetNotes'` is the name of the query we created in our `useQuery` example above.
+With this code, we're telling Apollo to refetch `'GetNotes'` after the `addNote` function is run. Now when we add a new note from the UI, it will "automatically" appear in our notes list without a need for a hard refresh. Learn more about refetching [here](https://www.apollographql.com/docs/react/data/refetching/).
+
+## Conclusion
+So there we have it, a fully functional, fullstack application. In this post, we’ve discussed the basics of creating a CRUD API using Apollo and GraphQL, and connecting it to a React frontend. We started by defining what GraphQL is and its purpose, and explaining the difference between REST and GraphQL. We also looked at some of the advantages of using GraphQL.
+
+Then, we began setting up our GraphQL server using Apollo Server by defining the schema for the CRUD API (schema-first development). We created resolvers for each CRUD operation and demonstrated how to test the backend using GraphQL Playground.
+
+Next, we set up Apollo Client on the frontend, defined the queries and mutations required to interact with the backend, and implemented a simple React UI to demonstrate how the frontend can interact with the backend.
+
+Now, of course, this post was not exhaustive, there are many nooks and crannies to uncover when it comes to learning about Apollo and GraphQL. That being said, here are a few high-quality resources to help you continue your adventure of becoming a fullstack engineer using React and GraphQL:
+
+### Apollo tutorials
+Apollo has some of the best docs and tutorials out there. Check out there amazing [Full Stack Quickstart](https://www.apollographql.com/tutorials/fullstack-quickstart/01-introduction) and explore all of their GraphQL tutorials on the awesome [Odyssey platform](https://www.apollographql.com/tutorials). They even provide
+certifications of completion for each of their tutorials to share on your LinkedIn or resume!
+
+### Javascript Everywhere
+If you want a deep dive into GraphQL, React, React Native, and more, look no further than the amazing book [Javascript Everywhere](https://www.amazon.com/_/dp/1492046981?tag=oreilly20-20). I cannot recommend this book enough. This is not some dry specs manual, it is an in-depth interactive guide to creating a real fullstack application using React & GraphQL.
+Do yourself a favor and pick up a copy of this book.
+
+### How to GraphQL
+I have not personally gone through this tutorial, but it was created by [Prisma](https://www.prisma.io/) and is highly respected in the GraphQL community. It's also open-source and free of charge.
+
+I hope you’ve enjoyed this post, thanks for reading!
+
+
+
+
+
