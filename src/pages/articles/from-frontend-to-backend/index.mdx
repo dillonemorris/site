@@ -18,9 +18,13 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 This post will cover writing a basic CRUD API using Apollo and GraphQL and connecting it to a React frontend. This will be relevant to web developers who want to learn how to create a full-stack application using modern technologies. By using Apollo and GraphQL, we can create APIs that are efficient, flexible, and easy to maintain. In this blog post, we'll walk through the steps of building a basic CRUD API using Apollo and GraphQL, and show how to connect it to a React frontend.
 
-I've created a [git repo](https://github.com/dillonemorris/fullstack-tutorial) with the final application, feel free to use it as a reference.
+I've created a [git repo](https://github.com/dillonemorris/fullstack-tutorial) with the final application. You have a couple options for following along, you could:
+1. Clone the repo and delete any existing applicaiton code (we're building a very basic app so the code is minimal)
+2. Create a new app and write from scratch using the repo as a guide if you get stuck (I'd recommend creating separate client and server folders as in the repo)
 
 ## What is GraphQL?
+
+Before we dive into the code, let's learn about what GraphQL is and why we'd want to use it.
 
 GraphQL is a programming language and execution engine that was created by Facebook to simplify the process of requesting data from servers to clients by providing a more efficient, powerful, and adaptable option to REST APIs.
 
@@ -49,6 +53,18 @@ We can define our schema using the GraphQL Schema Definition Language (SDL), whi
     Since our primary goal is to learn how to set up a GraphQL backend, rather than create a complex or revolutionary application, we’re going to develop a simple note-taking app.
 </InfoAlert>
 
+First, we need to import `gql`, a tagged template literal that helps us wrap GraphQL strings like the schema definition we're about to write. The idea here is that it takes GraphQL strings and converts them into the format that Apollo libraries can understand when working with operations and schemas, and it even allows syntax highlighting.
+
+We'll also define a constant called `typeDefs` (short for "type definitions") and use the gql template to assign our definitions to it. We'll want to write our schema within the `gql` tag.
+
+```js
+const { gql } = require("apollo-server");
+
+const typeDefs = gql`
+  // Our GraphQL schema will go here
+`
+```
+
 Let’s create our first type, which will be the note type:
 
 ```graphql
@@ -61,7 +77,7 @@ type Note {
 }
 ```
 
-This schema defines a `Note` type with fields for `id`, `title`, `content`, `createdAt`, and `updatedAt`. As you can see, we’re assigning our GraphQL schema to a constant called `typeDefs` and using the gql tagged template literal.
+This schema defines a `Note` type with fields for `id`, `title`, `content`, `createdAt`, and `updatedAt`. Apollo provides a tagged
 
 Okay, so we have our `Note` type, which is the backbone of our GraphQL schema. Next, we’ll want to create a `Query` type. The shape of this schema will hopefully make more sense when we move onto the next section concerning resolvers, but for now, let’s copy/paste the following `Query` type into our schema definition:
 
@@ -344,7 +360,7 @@ Notice that we included a JSON object with our `title` and `content` values in t
 
 <Image src={createNoteSuccess} alt='createNoteSuccess Apollo Playground screenshot' />
 
-6. Great! The response of the mutation was our newly created note which means our mutation was successful and the new note has been added to the “database.”
+6. Great! The response of the mutation was our newly created note which means our mutation was successful and the new note has been added to the database.
 7. Now, let’s see if we can query for our newly created note by running our `notes` query:
 
 <Image src={notes} alt='notes Apollo Playground screenshot' />
@@ -516,7 +532,7 @@ Alright, so we're able to add a new note from our React application. However, yo
   })
 ```
 
-We've altered our call to `useMutation` slightly by providing an option of `refetchQueries`. We are including the string `'GetNotes'` in this `refetchQueries` array. `'GetNotes'` is the name of the query we created in our `useQuery` example above.
+We've altered our call to `useMutation` slightly by providing an option of `refetchQueries`. We are including the string `'GetNotes'` in this `refetchQueries` array. `'GetNotes'` is the name of the query we created in our `useQuery` earlier.
 With this code, we're telling Apollo to refetch `'GetNotes'` after the `addNote` function is run. Now when we add a new note from the UI, it will "automatically" appear in our notes list without a need for a hard refresh. Learn more about refetching [here](https://www.apollographql.com/docs/react/data/refetching/).
 
 ## Conclusion
