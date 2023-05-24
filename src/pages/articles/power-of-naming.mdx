@@ -1,0 +1,213 @@
+import {ArticleLayout} from "@/components/ArticleLayout";
+
+export const meta = {
+  author: 'Dillon Morris',
+    // TODO: Update publish date
+  date: '2023-05-06',
+  title: 'The Power of Naming in JavaScript: Best Practices and Strategies',
+  description:
+    "Let's explore the significance of proper naming in JavaScript, delving into best practices and strategies that enhance code readability and maintainability.",
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+
+In the world of JavaScript development, the importance of proper naming cannot be emphasized enough.
+As developers, we spend a significant amount of time reading and writing code,
+and well-chosen names play a crucial role in making our code more readable, maintainable, and understandable by ourselves and others.
+In a [previous post](https://dillonemorris.com/articles/why-typescript-is-essential), I discussed the benefits of TypeScript and how it can enhance our codebase.
+Building upon that, in this article, we will explore how applying the concepts of proper naming to a well-typed codebase can amplify its benefits even further.
+Let's dive in and discover the power of naming in JavaScript!
+
+## Benefits of Proper Naming
+
+Proper naming in code is of utmost importance as it significantly impacts the readability, maintainability, and overall quality of our codebase.
+
+Breaking it down, here are several key reasons why proper naming is crucial.
+
+### Readability
+
+Code is read by developers far more often than it is written. When we use meaningful and descriptive names for variables, functions, classes, and other elements, it becomes easier for ourselves and others to understand the purpose and functionality of different parts of the codebase. Clear and concise names make our code more readable, reducing the cognitive load and making it easier to follow the logic and flow.
+
+### Self-Documenting Code
+
+Well-chosen names act as self-documentation for our code. By using descriptive names, we can convey the intent and functionality of a particular piece of code without needing additional comments. This improves the maintainability of the codebase, as developers can quickly grasp the purpose and behavior of various components.
+
+### Collaboration
+
+When working within a team, proper naming becomes even more critical. When multiple developers work on the same project, using consistent naming conventions and choosing meaningful names ensures a shared understanding among team members. It promotes effective communication and minimizes confusion, enabling developers to work together seamlessly.
+
+### Debugging and Troubleshooting
+
+When bugs or issues arise in our code, having well-named variables, functions, and classes can greatly assist in troubleshooting and debugging. Meaningful names make it easier to identify the source of a problem, narrow down potential causes, and locate specific sections of code that need to be investigated or modified.
+
+### Code Maintenance and Scalability
+
+As projects evolve over time, maintaining and scaling the codebase becomes crucial. Proper naming facilitates code maintenance by providing clear and intuitive identifiers. When we need to make changes or add new features, well-named code allows us to navigate through the codebase more efficiently, reducing the chances of introducing bugs and making the development process smoother.
+
+###
+
+In summary, proper naming in JavaScript enhances code readability, self-documentation, collaboration, debugging capabilities, and code maintainability. By investing time and thought into choosing meaningful names, we can significantly improve the quality and longevity of our code.
+
+## Tactics for Proper Naming
+
+We’ve learned how in JavaScript, employing proper naming practices brings numerous benefits to the clarity and maintainability of our code. Looks like at a few tactics we can lean on to reap these benefits:
+
+### Using meaningful and descriptive names
+
+By selecting names that accurately reflect their purpose and behavior, we provide instant understanding to anyone reading our code.
+
+Here's an example of a poorly named JavaScript function and variable:
+
+```js
+function xyz(a, b) {
+  let x = a * b;
+
+  return x;
+}
+```
+
+In this example, the function name `xyz` does not provide any meaningful information about its purpose or what it intends to do.
+Similarly, the variable `x` does not give any indication of the value it represents or its purpose within the function.
+
+This may be an exaggerated example, but hopefully it illustrates a point: when code lacks descriptive and meaningful names, it becomes difficult for other developers (including yourself in the future) to understand the code's intention and functionality.
+It can lead to confusion, bugs, and make the codebase harder to maintain and debug.
+
+Here's an example of a well-named JavaScript function and variable that provide meaningful information about their purpose and convey their intended use:
+
+```js
+function calculateRectangleArea(length, width) {
+  let rectangleArea = length * width;
+
+  return rectangleArea;
+}
+```
+
+In this example, the function `calculateRectangleArea` provides a clear indication of its purpose, which is to calculate the area of a rectangle.
+The parameters `length` and `width` are also well-named, as they describe the dimensions of the rectangle being used for the calculation.
+The variable `rectangleArea` is also well-named, as it clearly represents the calculated area of the rectangle.
+
+Using meaningful and descriptive names enhances the readability and maintainability of the code, making it easier to comprehend, debug, and collaborate on.
+By making these small changes, we drastically improve the overall quality and understandability of the codebase.
+
+### Following naming conventions
+
+When we are naming things, we always want to be consistent with any naming conventions that have been established in the codebase.
+Consistency in naming fosters a sense of familiarity, making it easier to navigate the code and locate specific elements.
+
+For example, let's say there's an established pattern of using camel case for variable and function names:
+
+```js
+let firstName = 'John';
+let lastName = 'Doe';
+
+function calculateDiscountedPrice(originalPrice, discountPercentage) {
+  return originalPrice * (1 - discountPercentage);
+}
+```
+
+We wouldn't want to introduce an unfamiliar naming pattern that is not consistent with the codebase:
+
+```js
+let strFirstName = 'John';
+let strLastName = 'Doe';
+
+function fnCalculateDiscountedPrice(numOriginalPrice, numDiscountPercentage) {
+  return numOriginalPrice * (1 - numDiscountPercentage);
+}
+```
+
+It’s also important to take into consideration established patterns within the Javascript community at large. For example, in JavaScript, it is common practice to use verbs for function names and nouns for variable names.
+
+```js
+function calculateTotalPrice(quantity, price) {
+  let totalPrice = quantity * price;
+
+  return totalPrice;
+}
+```
+
+By employing action-oriented names for functions and descriptive identifiers for variables, we create a code narrative that is easier to follow and interpret.
+
+### Avoid abbreviations or acronyms without explanation
+
+To ensure comprehensibility, it is advisable to avoid abbreviations or acronyms without proper explanation.
+While brevity may seem tempting, it often sacrifices clarity and introduces confusion.
+
+Here's an example of unexplained abbreviation:
+
+```js
+function calcDiscount(p, d) {
+  let disc = p * (d / 100);
+  let discountedPrice = p - disc;
+  return discountedPrice;
+}
+```
+
+Here, the function `calcDiscount` takes two parameters, `p` for the original price and `d` for the discount percentage.
+However, the use of abbreviations like `p` and `d` without proper explanation can make it unclear what these variables represent.
+It can lead to confusion and reduce the readability of the code.
+
+Now, let's improve the code by using meaningful and descriptive names:
+
+```js
+function calculateDiscountedPrice(originalPrice, discountPercentage) {
+  let discountAmount = originalPrice * (discountPercentage / 100);
+  let discountedPrice = originalPrice - discountAmount;
+  return discountedPrice;
+}
+```
+
+By avoiding unexplained abbreviations or acronyms and opting for meaningful names, the code becomes more self-explanatory and easier to comprehend for both you and the other developers on the team.
+
+### Consider scope and context
+
+When naming variables and functions, it is essential to consider their scope and context.
+Names should accurately convey their purpose within the specific context, making the code more intuitive to read and understand.
+
+Here's an example of naming that lacks context:
+
+```js
+function calculate() {
+  let num1 = 10;
+  let num2 = 5;
+
+  return num1 + num2;
+}
+
+const result = calculate();
+console.log(result); // Output: 15
+```
+
+In this example, the names `result`, `num1`, and `num2` do not provide enough context about their purpose within the code.
+Without considering the scope and context, it becomes challenging to understand their meaning and purpose,
+especially in more complex codebases.
+
+Now, let's improve the code by using names that consider the scope and context:
+
+```js
+function calculateSum() {
+  let firstNumber = 10;
+  let secondNumber = 5;
+
+  return firstNumber + secondNumber;
+}
+
+const sum = calculateSum();
+console.log(sum); // Output: 15
+```
+
+In this improved example, the names `sum`, `firstNumber`, and `secondNumber` are more meaningful and provide better context within the scope of the code.
+It becomes clear that the purpose of the `calculateSum` function is to compute the sum of two numbers,
+enhancing readability and making the code more intuitive to understand.
+
+By considering the scope and context when naming functions and variables, you are promoting better code comprehension and improving collaboration within your development team.
+
+## Conclusion
+
+// TODO
+
+
+
+
+
