@@ -2,11 +2,10 @@ import {ArticleLayout} from "@/components/ArticleLayout";
 
 export const meta = {
   author: 'Dillon Morris',
-    // TODO: Update publish date
-  date: '2023-05-06',
+  date: '2023-06-02',
   title: 'The Power of Naming in JavaScript: Best Practices and Strategies',
   description:
-    "Let's explore the significance of proper naming in JavaScript, delving into best practices and strategies that enhance code readability and maintainability.",
+    "Let's explore the significance of naming in JavaScript, delving into best practices and strategies that enhance code readability and maintainability.",
 }
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
@@ -15,15 +14,16 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 In the world of JavaScript development, the importance of proper naming cannot be emphasized enough.
 As developers, we spend a significant amount of time reading and writing code,
 and well-chosen names play a crucial role in making our code more readable, maintainable, and understandable by ourselves and others.
+
 In a [previous post](https://dillonemorris.com/articles/why-typescript-is-essential), I discussed the benefits of TypeScript and how it can enhance our codebase.
 Building upon that, in this article, we will explore how applying the concepts of proper naming to a well-typed codebase can amplify its benefits even further.
 Let's dive in and discover the power of naming in JavaScript!
 
-## Benefits of Proper Naming
+## Benefits of Quality Naming
 
-Proper naming in code is of utmost importance as it significantly impacts the readability, maintainability, and overall quality of our codebase.
+A focus on naming in code is of utmost importance as it significantly impacts the readability, maintainability, and overall quality of our codebase.
 
-Breaking it down, here are several key reasons why proper naming is crucial.
+Breaking it down, here are several key reasons why quality naming is beneficial.
 
 ### Readability
 
@@ -35,7 +35,7 @@ Well-chosen names act as self-documentation for our code. By using descriptive n
 
 ### Collaboration
 
-When working within a team, proper naming becomes even more critical. When multiple developers work on the same project, using consistent naming conventions and choosing meaningful names ensures a shared understanding among team members. It promotes effective communication and minimizes confusion, enabling developers to work together seamlessly.
+When working within a team, well-named code becomes even more critical. When multiple developers work on the same project, using consistent naming conventions and choosing meaningful names ensures a shared understanding among team members. It promotes effective communication and minimizes confusion, enabling developers to work together seamlessly.
 
 ### Debugging and Troubleshooting
 
@@ -43,21 +43,21 @@ When bugs or issues arise in our code, having well-named variables, functions, a
 
 ### Code Maintenance and Scalability
 
-As projects evolve over time, maintaining and scaling the codebase becomes crucial. Proper naming facilitates code maintenance by providing clear and intuitive identifiers. When we need to make changes or add new features, well-named code allows us to navigate through the codebase more efficiently, reducing the chances of introducing bugs and making the development process smoother.
+As projects evolve over time, maintaining and scaling the codebase becomes crucial. Good naming facilitates code maintenance by providing clear and intuitive identifiers. When we need to make changes or add new features, well-named code allows us to navigate through the codebase more efficiently, reducing the chances of introducing bugs and making the development process smoother.
 
 ###
 
-In summary, proper naming in JavaScript enhances code readability, self-documentation, collaboration, debugging capabilities, and code maintainability. By investing time and thought into choosing meaningful names, we can significantly improve the quality and longevity of our code.
+In summary, quality in naming enhances code readability, self-documentation, collaboration, debugging capabilities, and code maintainability. By investing time and thought into choosing meaningful names, we can significantly improve the quality and longevity of our code.
 
-## Tactics for Proper Naming
+## Tactics for Naming
 
-We’ve learned how in JavaScript, employing proper naming practices brings numerous benefits to the clarity and maintainability of our code. Looks like at a few tactics we can lean on to reap these benefits:
+We’ve learned how in JavaScript, employing the right naming practices can bring numerous benefits to the clarity and maintainability of our code. Looks like at a few tactics we can lean on to reap those benefits:
 
 ### Using meaningful and descriptive names
 
 By selecting names that accurately reflect their purpose and behavior, we provide instant understanding to anyone reading our code.
 
-Here's an example of a poorly named JavaScript function and variable:
+Let's start with an example of a poorly named JavaScript function and variable:
 
 ```js
 function xyz(a, b) {
@@ -71,7 +71,7 @@ In this example, the function name `xyz` does not provide any meaningful informa
 Similarly, the variable `x` does not give any indication of the value it represents or its purpose within the function.
 
 This may be an exaggerated example, but hopefully it illustrates a point: when code lacks descriptive and meaningful names, it becomes difficult for other developers (including yourself in the future) to understand the code's intention and functionality.
-It can lead to confusion, bugs, and make the codebase harder to maintain and debug.
+It can lead to confusion, and makes the codebase harder to maintain and debug.
 
 Here's an example of a well-named JavaScript function and variable that provide meaningful information about their purpose and convey their intended use:
 
@@ -93,7 +93,7 @@ By making these small changes, we drastically improve the overall quality and un
 ### Following naming conventions
 
 When we are naming things, we always want to be consistent with any naming conventions that have been established in the codebase.
-Consistency in naming fosters a sense of familiarity, making it easier to navigate the code and locate specific elements.
+This consistency fosters a sense of familiarity, making it easier to navigate the code and locate specific elements.
 
 For example, let's say there's an established pattern of using camel case for variable and function names:
 
@@ -205,7 +205,7 @@ By considering the scope and context when naming functions and variables, you ar
 
 ## Conclusion
 
-The power of proper naming in JavaScript cannot be overstated. By using meaningful and descriptive names, following established conventions, considering scope and context, and avoiding abbreviations without explanation, we can greatly enhance the readability and maintainability of our code.
+The power of naming in JavaScript cannot be overstated. By using meaningful and descriptive names, following established conventions, considering scope and context, and avoiding abbreviations without explanation, we can greatly enhance the readability and maintainability of our code.
 
 Thoughtful naming not only aids in understanding the purpose and behavior of variables, functions, and classes, but it also promotes collaboration, reduces bugs, and allows for easier code navigation. By embracing the best practices and strategies outlined in this post, we can elevate the quality of our code and foster a more efficient and enjoyable development experience.
 
@@ -221,7 +221,7 @@ Here are some helpful links to further explore the topic of naming in JavaScript
 
 1. [Naming cheatsheet](https://github.com/kettanaito/naming-cheatsheet) - This is a comprehensive naming cheatsheet hosted on GitHub. It offers a curated collection of best practices, guidelines, and examples for naming variables, functions, classes, and other elements in JavaScript.
 
-1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) -  is a GitHub repository that contains the JavaScript style guide by Airbnb. The guide covers various aspects of JavaScript development, including syntax, naming conventions, code organization, and more.
+1. [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript) -  This is another GitHub repository that contains the JavaScript style guide by Airbnb. The guide covers various aspects of JavaScript development, including syntax, naming conventions, code organization, and more.
 
 1. [Naming my function](https://namingmyfunction.vercel.app/) - This is a fun and interactive tool that helps developers come up with meaningful and descriptive names for their functions. It provides a simple interface where users can input the purpose or behavior of their function, and the tool generates suggested names based on common naming conventions and patterns.
 
