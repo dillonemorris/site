@@ -19,33 +19,10 @@ import image5 from '@/images/photos/image-5.jpg'
 import logoSynapse from '@/images/logos/synapse.svg'
 import logoElm from '@/images/logos/elmstreet.svg'
 import logoFormidable from '@/images/logos/formidable.svg'
-import logoAerotek from '@/images/logos/aerotek.svg'
+import logoAmex from '@/images/logos/amex.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
-
-function MailIcon(props) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path
-        d="M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
-        className="fill-zinc-100 stroke-zinc-400 dark:fill-zinc-100/10 dark:stroke-zinc-500"
-      />
-      <path
-        d="m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6"
-        className="stroke-zinc-400 dark:stroke-zinc-500"
-      />
-    </svg>
-  )
-}
 
 function BriefcaseIcon(props) {
   return (
@@ -109,6 +86,16 @@ function SocialLink({ icon: Icon, ...props }) {
 function Resume() {
   let resume = [
     {
+      company: 'American Express',
+      title: 'UI Engineer',
+      logo: logoAmex,
+      start: '2023',
+      end: {
+        label: 'Present',
+        dateTime: new Date().getFullYear(),
+      },
+    },
+    {
       company: 'Formidable',
       title: 'Software Engineer',
       logo: logoFormidable,
@@ -132,13 +119,6 @@ function Resume() {
       logo: logoElm,
       start: '2018',
       end: '2019',
-    },
-    {
-      company: 'Aerotek Staffing',
-      title: 'Customer Service',
-      logo: logoAerotek,
-      start: '2016',
-      end: '2018',
     },
   ]
 
@@ -185,7 +165,7 @@ function Resume() {
       <Button
         href="resume.png"
         target="blank"
-        download="Dillon Morris Resume 2023"
+        download="Dillon Morris Resume 2024"
         variant="secondary"
         className="group mt-6 w-full"
       >
@@ -273,7 +253,6 @@ export default function Home({ articles }) {
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            {/*<Newsletter />*/}
             <Resume />
           </div>
         </div>
