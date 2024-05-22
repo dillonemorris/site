@@ -3,16 +3,37 @@ import Head from 'next/head'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import logoGems from '@/images/logos/gem.svg'
 import logoPortfolio2 from '@/images/logos/portfolio2.svg'
 import logoTypewise from '@/images/logos/typewise.svg'
-import logoPortfolio1 from '@/images/logos/portfolio1.svg'
 import logoWaterLog from '@/images/logos/water.svg'
+import logoSonicBloom from '@/images/logos/music-note.svg'
+import logoInspaverse from '@/images/logos/sparkles.svg'
 
 const projects = [
   {
+    name: 'SonicBloom',
+    description:
+      'A music discovery app that generates personalized playlists based on user-selected "seed" tracks.',
+    link: {
+      href: 'https://github.com/dillonemorris/sonic-bloom',
+      label: 'github.com',
+    },
+    logo: logoSonicBloom,
+  },
+  {
+    name: 'Inspaverse',
+    description:
+      'A simple and elegant app, showcasing quotes to uplift your spirits and inspire you every day.',
+    link: {
+      href: 'https://github.com/dillonemorris/inspaverse',
+      label: 'github.com',
+    },
+    logo: logoInspaverse,
+  },
+  {
     name: 'Water Log',
-    description: 'A simple water intake tracker to help you stay hydrated.',
+    description:
+      'A simple water intake tracker to help you stay hydrated. Uses local storage to persist your daily goal.',
     link: {
       href: 'https://github.com/dillonemorris/water-log',
       label: 'github.com',
@@ -20,18 +41,9 @@ const projects = [
     logo: logoWaterLog,
   },
   {
-    name: 'UI Gems',
-    description: 'Bringing you the best of the best UI designs on the web. ',
-    link: {
-      href: 'https://github.com/dillonemorris/ui-gems',
-      label: 'github.com',
-    },
-    logo: logoGems,
-  },
-  {
     name: 'Portfolio site v2',
     description:
-      'A nifty looking portfolio site with cool shapes and fancy page transitions.',
+      'A nifty looking portfolio site I designed with cool shapes and fancy page transitions.',
     link: {
       href: 'https://github.com/dillonemorris/portfolio',
       label: 'github.com',
@@ -39,18 +51,9 @@ const projects = [
     logo: logoPortfolio2,
   },
   {
-    name: 'Portfolio site v1',
-    description:
-      'A snappy portfolio site I designed and built straight outta scratch.',
-    link: {
-      href: 'https://happy-mahavira-5cd669.netlify.app/',
-      label: 'Visit site',
-    },
-    logo: logoPortfolio1,
-  },
-  {
     name: 'Typewise',
-    description: 'A curated assortment of the best Google Fonts.',
+    description:
+      'A curated assortment of the best Google Fonts. A very simple react app I built back in 2018.',
     link: {
       href: 'https://github.com/dillonemorris/typewise',
       label: 'github.com',
@@ -88,12 +91,7 @@ export default function Projects() {
           {projects.map((project) => (
             <Card as="li" key={project.name}>
               <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-                <Image
-                  src={project.logo}
-                  alt=""
-                  className="h-8 w-8"
-                  unoptimized
-                />
+                <Image src={project.logo} alt="" unoptimized />
               </div>
               <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
                 <Card.Link href={project.link.href}>{project.name}</Card.Link>
