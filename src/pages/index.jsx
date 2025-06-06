@@ -20,6 +20,7 @@ import logoSynapse from '@/images/logos/synapse.svg'
 import logoElm from '@/images/logos/elmstreet.svg'
 import logoFormidable from '@/images/logos/formidable.svg'
 import logoAmex from '@/images/logos/amex.svg'
+import smartrent from '@/images/logos/smartrent.svg'
 import { generateRssFeed } from '@/lib/generateRssFeed'
 import { getAllArticles } from '@/lib/getAllArticles'
 import { formatDate } from '@/lib/formatDate'
@@ -86,14 +87,21 @@ function SocialLink({ icon: Icon, ...props }) {
 function Resume() {
   let resume = [
     {
-      company: 'American Express',
-      title: 'UI Engineer',
-      logo: logoAmex,
-      start: '2023',
+      company: 'SmartRent',
+      title: 'Senior Software Engineer',
+      logo: smartrent,
+      start: '2024',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear(),
       },
+    },
+    {
+      company: 'American Express',
+      title: 'UI Engineer',
+      logo: logoAmex,
+      start: '2023',
+      end: '2024',
     },
     {
       company: 'Formidable',
@@ -101,10 +109,6 @@ function Resume() {
       logo: logoFormidable,
       start: '2020',
       end: '2022',
-      // end: {
-      //   label: 'Present',
-      //   dateTime: new Date().getFullYear(),
-      // },
     },
     {
       company: 'Synapse Studios',
@@ -244,7 +248,7 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
-      <Photos />
+      {/*<Photos />*/}
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
