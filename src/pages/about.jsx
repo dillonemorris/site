@@ -9,6 +9,7 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
+import { CodeBracketIcon, CpuChipIcon } from '@heroicons/react/24/outline'
 import portraitImage from '@/images/photos/portrait.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
@@ -60,24 +61,70 @@ export default function About() {
           </div>
           <div className="lg:order-first lg:row-span-2">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              Empowering people through technology is my mission.
+              My Engineering Philosophy
             </h1>
             <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
               <p>
-                As a developer specializing in React, Next and Typescript, I
-                bring extensive experience to the table, having worked on
-                various projects including a geo-spatial data analysis app and
-                an e-commerce site migration at companies with global reach. In
-                addition to technical skills, I have a customer service
-                background which has helped me develop strong empathy and
-                communication skills, making me a valuable collaborator on any
-                team. I take pride in continuously learning and challenging {''}
-                {/* eslint-disable-next-line react/no-unescaped-entities */}
-                myself, and I'm passionate about sharing my knowledge and
-                helping others level up. And of course, my furry friend Bowie
-                keeps me grounded and reminds me to take breaks and enjoy the
-                little things in life.
+                I believe in pragmatic engineering balanced with
+                product-thinking. My approach combines technical excellence with
+                a deep understanding of user needs and business impact. I
+                leverage AI tools like Cursor and GPT to accelerate both
+                delivery speed and code quality, allowing me to focus on solving
+                complex problems rather than repetitive tasks. Above all, I{"'"}m
+                passionate about shipping products that people actually use—not
+                just building them. Every line of code should serve a purpose in
+                creating meaningful user experiences.
               </p>
+
+              <div>
+                <h2 className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-100">
+                  Full-Stack & AI Work
+                </h2>
+
+                <div className="space-y-12">
+                  <p>
+                    Working with modern AI tools like OpenAI{"'"}s API, I{"'"}ve
+                    integrated intelligent features into production
+                    applications, handling everything from prompt optimization
+                    to response processing. This includes building smart writing
+                    assistants, implementing contextual AI recommendations, and
+                    creating seamless user experiences that leverage AI
+                    capabilities without overwhelming the interface.
+                  </p>
+                  <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <CodeBracketIcon className="h-6 w-6 text-emerald-500" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                          End-to-End Development
+                        </h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          From PostgreSQL schemas and API design to React
+                          components and deployment pipelines — I handle the
+                          complete stack with confidence.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <CpuChipIcon className="h-6 w-6 text-blue-500" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                          AI Integration & Product
+                        </h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          Practical experience integrating AI APIs, optimizing
+                          prompts, and building intelligent features that users
+                          actually want to use.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="lg:pl-20">
