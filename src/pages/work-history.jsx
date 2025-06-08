@@ -34,41 +34,62 @@ export default function WorkHistory() {
                   SmartRent
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
-                  July 2024 - Present • 1 year
+                  2024 - Present
                 </p>
               </div>
               
               <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
-                  When SmartRent faced company-wide layoffs in 2023, I stepped up to become the bridge between engineering and product teams during one of the most challenging periods in the company{"'"}s history. With reduced headcount, I took on cross-functional responsibilities that went far beyond my original role scope.
+                  I own the frontend for SmartRent&apos;s flagship product, which is
+                  responsible for the vast majority of the company&apos;s revenue. In
+                  a short period, I&apos;ve established myself as an integral team
+                  member and the go-to resource for frontend development, making
+                  a significant impact on our most challenging projects.
                 </p>
                 
                 <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
                   <h4 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
-                    Key Impact During Crisis
+                    Performance Highlights
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-green-500 font-bold">•</span>
-                      <span>Maintained critical system stability while team size was reduced by 40%, ensuring zero downtime for property management customers</span>
+                      <span>
+                        Executed a complete redesign of the product navigation,
+                        handling 100% of the development to implement
+                        breadcrumbs, page favorites, and a modern look and feel.
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-500 font-bold">•</span>
-                      <span>Created comprehensive technical documentation that became the onboarding standard for new team members</span>
+                      <span>
+                        Delivered high-quality work on a large critical feature,
+                        assisted other teams with their projects, and contributed
+                        to the strategic planning of the company&apos;s
+                        next-generation platform.
+                      </span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-green-500 font-bold">•</span>
-                      <span>Mentored 3 junior developers through complex full-stack features, accelerating their contribution timeline by 2-3 months</span>
+                      <span>
+                        Improved codebase stability and team efficiency by
+                        resolving longstanding frontend bugs and leading
+                        critical dependency updates.
+                      </span>
                     </li>
                   </ul>
                 </div>
                 
                 <p>
-                  Beyond crisis management, I owned the end-to-end development of SmartRent{"'"}s resident portal features. This included designing React components that scaled across multiple property types, optimizing PostgreSQL queries that reduced page load times by 60%, and implementing real-time notification systems using WebSockets and Redis.
+                  My approach is highly collaborative; I am always willing to
+                  help teammates, pair on difficult problems, and provide
+                  thoughtful code reviews. This team-first attitude fosters a
+                  supportive environment and sets a strong example.
                 </p>
-                
                 <p>
-                  Working directly with product managers and UX designers, I transformed complex property management workflows into intuitive user experiences. I became the go-to engineer for cross-functional projects because I could translate business requirements into technical solutions while keeping user experience at the forefront.
+                  My manager recognized this impact, noting my contributions as
+                  &quot;essential to our success&quot; and highlighting my rapid
+                  growth into a technical leader on the team.
                 </p>
               </div>
             </div>
@@ -89,7 +110,7 @@ export default function WorkHistory() {
               
               <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
-                  Before SmartRent, I cut my teeth building production applications under tight deadlines for startups and established companies. This period taught me the importance of shipping quickly while maintaining code quality—a balance I{"'"}ve carried throughout my career.
+                  Before SmartRent, I cut my teeth building production applications under tight deadlines for startups and established companies. This period taught me the importance of shipping quickly while maintaining code quality—a balance I&apos;ve carried throughout my career.
                 </p>
                 
                 <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
@@ -125,13 +146,13 @@ export default function WorkHistory() {
               </h2>
               <div className="space-y-4 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
-                  I thrive in environments where I can take ownership of problems and see them through to completion. Whether it{"'"}s stepping up during layoffs, mentoring team members, or shipping features under pressure, I{"'"}m motivated by creating impact that extends beyond just writing code.
+                  I thrive in environments where I can take ownership of problems and see them through to completion. Whether it&apos;s stepping up during layoffs, mentoring team members, or shipping features under pressure, I&apos;m motivated by creating impact that extends beyond just writing code.
                 </p>
                 <p>
-                  The combination of technical depth and cross-functional collaboration has become my signature approach. I don{"'"}t just build what{"'"}s asked—I partner with teams to build what{"'"}s needed, often anticipating requirements before they{"'"}re articulated.
+                  The combination of technical depth and cross-functional collaboration has become my signature approach. I don&apos;t just build what&apos;s asked—I partner with teams to build what&apos;s needed, often anticipating requirements before they&apos;re articulated.
                 </p>
                 <p>
-                  This mindset has prepared me for senior engineering roles where product ownership, team leadership, and autonomous execution are not just valued—they{"'"}re essential.
+                  This mindset has prepared me for senior engineering roles where product ownership, team leadership, and autonomous execution are not just valued—they&apos;re essential.
                 </p>
               </div>
             </div>
