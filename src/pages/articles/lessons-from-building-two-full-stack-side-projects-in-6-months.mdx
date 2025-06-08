@@ -1,0 +1,106 @@
+import {ArticleLayout} from '@/components/ArticleLayout'
+
+export const meta = {
+    author: 'Dillon Morris',
+    date: '2025-06-08',
+    title: 'Lessons from Building Two Full-Stack Side Projects in 3 Months',
+    description:
+        'Key insights from shipping Hey Brevity and Wrapped - two complete full-stack applications with AI integration, user authentication, and production deployment.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Over the past three months, I built and shipped two complete full-stack applications: **[Hey Brevity](https://heybrevity.com)**, an AI-powered web app that rewrites your messages to be more concise or professional, and **[Wrapped](https://getwrapped.app)**, a mobile app to help you remember gift ideas and important details about the people you care about. Both projects went from concept to production, teaching me valuable lessons about modern web development, AI integration, and the realities of shipping solo projects.
+
+Here are the key lessons I learned—and the mistakes I made along the way.
+
+## Choose Your Stack for Speed, Not Perfection
+
+**The Decision:** I used Next.js, Supabase, and Vercel for Hey Brevity, and Expo with Supabase for Wrapped. Different platforms, but I kept Supabase as the backend for both.
+
+**The Lesson:** While I didn't use identical stacks, keeping Supabase as the backend for both projects paid dividends. I could reuse authentication patterns, database schemas, and API integrations. When I started Hey Brevity, I had already solved most of the backend challenges from Wrapped, even though I was building a web app instead of a mobile app.
+
+**The Mistake I Made:** I initially tried to optimize database queries too early in Hey Brevity. I spent hours fine-tuning PostgreSQL performance for a feature that had zero users. Ship first, optimize later.
+
+## AI Integration Is About User Experience, Not Technology
+
+**The Reality:** Both Hey Brevity and Wrapped use OpenAI's API, but the value isn't the AI itself—it's how it solves a user problem. For Hey Brevity, the challenge was helping professionals communicate more clearly and efficiently. For Wrapped, it was sparking thoughtfulness.
+
+**What I Learned:**
+- **Prompt engineering is product design.** For Hey Brevity, I spent weeks refining prompts to generate rewrites that were not just grammatically correct, but also matched specific tones like "more friendly" or "more professional." In Wrapped, the prompts focused on generating creative and relevant gift ideas based on sparse user input.
+- **Users need guardrails.** I learned to handle prompt injection and potential abuse, especially for an anonymous-use app like Hey Brevity. Your app is responsible for the output, even if it comes from a third-party API.
+- **Error handling is non-negotiable.** When the API is down or returns unexpected results, your app needs graceful fallbacks. For Wrapped, if AI suggestions fail, the app still works perfectly for manually tracking gift ideas.
+
+## Authentication Should Be Boring (and Optional)
+
+**The Decision:** I used Supabase Auth for both projects but made sign-ups as frictionless as possible.
+
+**Why This Was Right:** Authentication is a solved problem. Forcing users to sign up creates friction that can kill an early-stage project. Hey Brevity is usable without an account, offering a freemium model based on usage limits. Wrapped allows users to start getting gift ideas immediately, with an optional account to sync data across devices.
+
+**The Lesson:** Focus on delivering value first. By making authentication optional, I let users experience the core features of each app before asking for a commitment. This significantly improved my adoption rates.
+
+## Database Design Matters More Than You Think
+
+**The Challenge:** Wrapped needed to handle relationship data—users, their "recipients," gift ideas, key dates, and personal preferences. Getting this data model right was crucial for the app's core purpose.
+
+**What I Learned:**
+- **Design for your core feature.** For Wrapped, the entire schema is built around the "recipients" table. This focus made it easy to add related data like gifts and notes.
+- **PostgreSQL's JSONB columns are a great tool for flexible data.** I used them in both apps for user settings and preferences, avoiding schema migrations for minor changes.
+- **Keep it simple.** Hey Brevity has an intentionally simple data model. Since its primary value is processing text, not storing it long-term, I avoided building a complex database structure.
+
+## Designing for Discovery, Not Just for Specs
+
+**The Surprise:** While building Hey Brevity, I discovered one of its most compelling use cases wasn't what I originally planned. I found myself using the "rewrite" feature to polish my own meeting notes, not just emails. It showed me that users will inevitably find their own value in your product.
+
+**The Lesson:** You can't perfectly predict how your app will be used. Build measurement into your app from day one so you're ready to learn from actual user behavior. Their actions will surprise you and reveal unexpected opportunities.
+
+**The Implementation:** I added simple event tracking to both apps using Supabase's built-in analytics. It's not collecting data yet, but it's ready to help me understand user behavior and feature adoption as soon as people start using the apps.
+
+## Deployment and Monitoring Are Features, Not Afterthoughts
+
+**The Setup:** The deployment strategy was tailored to the platform. Hey Brevity, a Next.js web app, deploys automatically to Vercel on every push to `main`. Wrapped, a React Native app, uses Expo's build services to create binaries for the App Store and Google Play.
+
+**What I Learned:**
+- **Automate everything.** Whether it's Vercel's CI/CD for web or Expo's build commands for mobile, automation is non-negotiable for solo projects. It eliminates manual errors and keeps your development flow state intact.
+- **Production reveals unique edge cases.** I discovered a bug in Hey Brevity's AI processing that only occurred with specific input lengths. For Wrapped, I had to handle various offline scenarios unique to mobile apps.
+- **Simple monitoring is usually enough.** I use Vercel's built-in analytics and Supabase's dashboard. It's enough to catch issues without overwhelming me with data.
+
+## The AI Development Workflow That Actually Works
+
+Building AI features requires a different development approach than traditional web features:
+
+**1. Prototype with the Playground First**
+I built and tested every AI feature in OpenAI's playground before writing any code. This saved hours of debugging prompt issues in my application.
+
+**2. Build Fallbacks for Everything**
+AI APIs can fail, return malformed responses, or hit rate limits. Every AI feature in my apps has a fallback—either a simplified version or a graceful error state.
+
+**3. Cache Expensive Operations**
+AI API calls are slow and expensive. I cache common requests in Supabase and use Redis for real-time caching. This improved response times by 60% and reduced API costs.
+
+## The Product Mindset Makes Technical Decisions Easier
+
+**The Realization:** Building these projects taught me that technical decisions must serve user needs, not engineering elegance. This meant being minimalist by design.
+
+**Examples:**
+- **I stripped Hey Brevity down to its core value:** fast, tone-correct writing help. This meant prioritizing a simple UI and avoiding features that added complexity without clear user benefit.
+- **I scoped the MVP for Wrapped to 1–2 core features.** Instead of building a full-fledged relationship manager, I focused only on remembering gift ideas and key details. This tight scope is what made it possible to ship quickly.
+- **I avoided microservices and kept both apps as monoliths.** The complexity wasn't justified by user needs, and full-stack ownership of a monolith is much simpler for a solo developer.
+
+## The Harsh Reality of Solo Development
+
+**Time Management:** Three months goes by quickly when you're handling everything—design, development, deployment, and product direction.
+
+**The Lesson:** Ruthlessly prioritize and time-box everything. I maintained a "must-have," "nice-to-have," and "maybe-later" list for each project. Both projects were scoped tightly to ensure they could be shipped quickly.
+
+**What Worked:** I time-boxed feature development. If a feature takes longer than a few days, I either simplified it or moved it to the next iteration. This mindset of shipping something imperfect but useful was key to launching both projects instead of getting stuck perfecting features indefinitely.
+
+## Looking Forward
+
+Both Hey Brevity and Wrapped are now in production and ready for users. My goal is for Hey Brevity to help professionals communicate more effectively, and for Wrapped to help people be more thoughtful in their relationships.
+
+**The Meta-Lesson:** Building complete applications—from database design to AI integration to full-stack ownership—taught me more about modern development than any tutorial. The combination of technical depth and product thinking is what separates engineers who can build from engineers who can ship.
+
+If you're considering building a side project, my advice is simple: pick a stack you're comfortable with, start with user needs instead of cool technology, and ship something imperfect rather than building something perfect that never launches.
+
+Both projects are live and available for you to try: [Hey Brevity](https://heybrevity.com) and [Wrapped](https://getwrapped.app). The real learning happens when users start clicking buttons you built and using features you designed. Everything else is just practice. 

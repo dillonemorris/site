@@ -6,6 +6,7 @@ import clsx from 'clsx'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
+import { FeaturedProjects } from '@/components/FeaturedProjects'
 import {
   InstagramIcon,
   GitHubIcon,
@@ -211,23 +212,23 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Crafting digital experiences with React and empathy.</title>
+        <title>Senior Engineer. Full-stack builder. AI enthusiast.</title>
         <meta
           name="description"
-          content="Crafting digital experiences with React and empathy."
+          content="Senior Engineer. Full-stack builder. AI enthusiast."
         />
       </Head>
       <Container className="mt-9">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Crafting digital experiences with React and empathy.
+            Senior Engineer. Full-stack builder. AI enthusiast.
           </h1>
-          <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
+            I design and build modern web apps from end to end — with a focus on
+            clear {''}
             {/* eslint-disable-next-line react/no-unescaped-entities */}
-            My passion is to use technology to empower and uplift people, making
-            a positive impact on their lives and creating a better future for
-            all. I believe in the power of teamwork and am energized by
-            collaborating with others to achieve great things.
+            UX, clean architecture, and practical AI integration. I'm driven by
+            curiosity, fast iteration, and a bias toward shipping real value.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
@@ -248,8 +249,11 @@ export default function Home({ articles }) {
           </div>
         </div>
       </Container>
+      <Container className="mt-16 sm:mt-20">
+        <FeaturedProjects />
+      </Container>
       {/*<Photos />*/}
-      <Container className="mt-24 md:mt-28">
+      <Container className="mt-24 sm:mt-32">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {articles.map((article) => (
