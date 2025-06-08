@@ -224,8 +224,9 @@ export default function Home({ articles }) {
             Senior Engineer. Full-stack builder. AI enthusiast.
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
-            {/* eslint-disable-next-line react/no-unescaped-entities */}I design
-            and build modern web apps from end to end — with a focus on clear
+            I design and build modern web apps from end to end — with a focus on
+            clear {''}
+            {/* eslint-disable-next-line react/no-unescaped-entities */}
             UX, clean architecture, and practical AI integration. I'm driven by
             curiosity, fast iteration, and a bias toward shipping real value.
           </p>
