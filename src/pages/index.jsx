@@ -168,9 +168,9 @@ function Resume() {
         ))}
       </ol>
       <Button
-        href="resume.png"
+        href="resume.pdf"
         target="blank"
-        download="Dillon Morris Resume 2024"
+        download={`Dillon Morris Resume ${new Date().getFullYear()}`}
         variant="secondary"
         className="group mt-6 w-full"
       >
