@@ -108,10 +108,10 @@ export function FeaturedProjects() {
   return (
     <div>
       <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
-        Featured Projects
+        Featured Side Projects
       </h2>
       <p className="mt-4 text-base text-zinc-600 dark:text-zinc-400">
-        Here are some of the projects I&apos;m most proud of.
+        Here are some personal side projects I&apos;ve built in my spare time that I&apos;m most proud of.
       </p>
       <ul
         role="list"
