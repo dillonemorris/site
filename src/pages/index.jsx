@@ -49,11 +49,11 @@ function BriefcaseIcon(props) {
   )
 }
 
-function ArrowDownIcon(props) {
+function ChevronRightIcon(props) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
-        d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+        d="M6.75 5.75 9.25 8l-2.5 2.25"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -168,14 +168,12 @@ function Resume() {
         ))}
       </ol>
       <Button
-        href="resume.pdf"
-        target="blank"
-        download={`Dillon Morris Resume ${new Date().getFullYear()}`}
+        href="/work-history"
         variant="secondary"
         className="group mt-6 w-full"
       >
-        Download Resume
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        View work history
+        <ChevronRightIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
   )

@@ -77,6 +77,12 @@ export default function WorkHistory() {
                         critical dependency updates.
                       </span>
                     </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-green-500 font-bold">•</span>
+                      <span>
+                        Regularly collaborate with PMs, designers, and backend teams to align technical solutions with business needs.
+                      </span>
+                    </li>
                   </ul>
                 </div>
                 
@@ -143,6 +149,18 @@ export default function WorkHistory() {
                         of FSSO within the One App micro-frontend architecture.
                       </span>
                     </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-500 font-bold">•</span>
+                      <span>
+                        Advocated for best practices in accessibility and performance.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-cyan-500 font-bold">•</span>
+                      <span>
+                        Refactored our micro frontend, reducing overall code by at least 50% while keeping the product highly performant.
+                      </span>
+                    </li>
                   </ul>
                 </div>
                 <p>
@@ -171,7 +189,7 @@ export default function WorkHistory() {
               <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
                   As a consultant at a leading JavaScript firm, I delivered
-                  high-impact solutions for enterprise clients.
+                  high-impact solutions for enterprise clients. Hired as the &quot;JavaScript experts,&quot; we were entrusted to guide our client&apos;s engineers on best practices.
                 </p>
 
                 <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
@@ -193,6 +211,18 @@ export default function WorkHistory() {
                         Built a data analysis tool for the T-Mobile Home
                         Internet sales team, resulting in a 20% increase in
                         sales productivity.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-rose-500 font-bold">•</span>
+                      <span>
+                        Delivered scalable frontend solutions across multiple enterprise-grade applications.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-rose-500 font-bold">•</span>
+                      <span>
+                        Mentored engineers through code reviews and knowledge-sharing sessions, contributing to team growth.
                       </span>
                     </li>
                   </ul>
