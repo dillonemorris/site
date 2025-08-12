@@ -5,14 +5,14 @@ export const meta = {
     date: '2025-06-08',
     title: 'Lessons from Building Two Full-Stack Side Projects in 3 Months',
     description:
-        'Key insights from shipping Hey Brevity and Wrapped - two complete full-stack applications with AI integration, user authentication, and production deployment.',
+        'Key insights from shipping Hey Brevity and Wrapped: two complete full-stack applications with AI integration, user authentication, and production deployment.',
 }
 
 export default (props) => <ArticleLayout meta={meta} {...props} />
 
 Over the past three months, I built and shipped two complete full-stack applications: **[Hey Brevity](https://heybrevity.com)**, an AI-powered web app that rewrites your messages to be more concise or professional, and **[Wrapped](https://getwrapped.app)**, a mobile app to help you remember gift ideas and important details about the people you care about. Both projects went from concept to production, teaching me valuable lessons about modern web development, AI integration, and the realities of shipping solo projects.
 
-Here are the key lessons I learned—and the mistakes I made along the way.
+Here are the key lessons I learned, and the mistakes I made along the way.
 
 ## Choose Your Stack for Speed, Not Perfection
 
@@ -24,7 +24,7 @@ Here are the key lessons I learned—and the mistakes I made along the way.
 
 ## AI Integration Is About User Experience, Not Technology
 
-**The Reality:** Both Hey Brevity and Wrapped use OpenAI's API, but the value isn't the AI itself—it's how it solves a user problem. For Hey Brevity, the challenge was helping professionals communicate more clearly and efficiently. For Wrapped, it was sparking thoughtfulness.
+**The Reality:** Both Hey Brevity and Wrapped use OpenAI's API, but the value isn't the AI itself, it's how it solves a user problem. For Hey Brevity, the challenge was helping professionals communicate more clearly and efficiently. For Wrapped, it was sparking thoughtfulness.
 
 **What I Learned:**
 - **Prompt engineering is product design.** For Hey Brevity, I spent weeks refining prompts to generate rewrites that were not just grammatically correct, but also matched specific tones like "more friendly" or "more professional." In Wrapped, the prompts focused on generating creative and relevant gift ideas based on sparse user input.
@@ -41,7 +41,7 @@ Here are the key lessons I learned—and the mistakes I made along the way.
 
 ## Database Design Matters More Than You Think
 
-**The Challenge:** Wrapped needed to handle relationship data—users, their "recipients," gift ideas, key dates, and personal preferences. Getting this data model right was crucial for the app's core purpose.
+**The Challenge:** Wrapped needed to handle relationship data, users, their "recipients," gift ideas, key dates, and personal preferences. Getting this data model right was crucial for the app's core purpose.
 
 **What I Learned:**
 - **Design for your core feature.** For Wrapped, the entire schema is built around the "recipients" table. This focus made it easy to add related data like gifts and notes.
@@ -73,7 +73,7 @@ Building AI features requires a different development approach than traditional 
 I built and tested every AI feature in OpenAI's playground before writing any code. This saved hours of debugging prompt issues in my application.
 
 **2. Build Fallbacks for Everything**
-AI APIs can fail, return malformed responses, or hit rate limits. Every AI feature in my apps has a fallback—either a simplified version or a graceful error state.
+AI APIs can fail, return malformed responses, or hit rate limits. Every AI feature in my apps has a fallback, either a simplified version or a graceful error state.
 
 **3. Cache Expensive Operations**
 AI API calls are slow and expensive. I cache common requests in Supabase and use Redis for real-time caching. This improved response times by 60% and reduced API costs.
@@ -89,7 +89,7 @@ AI API calls are slow and expensive. I cache common requests in Supabase and use
 
 ## The Harsh Reality of Solo Development
 
-**Time Management:** Three months goes by quickly when you're handling everything—design, development, deployment, and product direction.
+**Time Management:** Three months goes by quickly when you're handling everything, design, development, deployment, and product direction.
 
 **The Lesson:** Ruthlessly prioritize and time-box everything. I maintained a "must-have," "nice-to-have," and "maybe-later" list for each project. Both projects were scoped tightly to ensure they could be shipped quickly.
 
@@ -99,7 +99,7 @@ AI API calls are slow and expensive. I cache common requests in Supabase and use
 
 Both Hey Brevity and Wrapped are now in production and ready for users. My goal is for Hey Brevity to help professionals communicate more effectively, and for Wrapped to help people be more thoughtful in their relationships.
 
-**The Meta-Lesson:** Building complete applications—from database design to AI integration to full-stack ownership—taught me more about modern development than any tutorial. The combination of technical depth and product thinking is what separates engineers who can build from engineers who can ship.
+**The Meta-Lesson:** Building complete applications, from database design to AI integration to full-stack ownership, taught me more about modern development than any tutorial. The combination of technical depth and product thinking is what separates engineers who can build from engineers who can ship.
 
 If you're considering building a side project, my advice is simple: pick a stack you're comfortable with, start with user needs instead of cool technology, and ship something imperfect rather than building something perfect that never launches.
 

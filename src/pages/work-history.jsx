@@ -17,43 +17,44 @@ export default function WorkHistory() {
             Work History
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            A narrative-driven look at my professional journey, highlighting impact and leadership in challenging environments.
+            A narrative-driven look at my professional journey, highlighting
+            impact and leadership in challenging environments.
           </p>
         </header>
-        
+
         <div className="mt-16 sm:mt-20">
           <div className="space-y-20">
-            
             {/* SmartRent Section */}
             <div className="border-l-4 border-blue-500 pl-6">
-              <div className="flex flex-col gap-2 mb-6">
+              <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Senior Software Engineer
                 </h2>
-                <h3 className="text-xl text-blue-600 dark:text-blue-400 font-semibold">
+                <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">
                   SmartRent
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
                   2024 - Present
                 </p>
               </div>
-              
+
               <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
-                  I own the frontend for SmartRent&apos;s flagship product, which is
-                  responsible for the vast majority of the company&apos;s revenue. In
-                  a short period, I&apos;ve established myself as an integral team
-                  member and the go-to resource for frontend development, making
-                  a significant impact on our most challenging projects.
+                  I own the frontend for SmartRent&apos;s flagship product,
+                  which is responsible for the vast majority of the
+                  company&apos;s revenue. In a short period, I&apos;ve
+                  established myself as an integral team member and the go-to
+                  resource for frontend development, making a significant impact
+                  on our most challenging projects.
                 </p>
-                
-                <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
-                  <h4 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
+
+                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Performance Highlights
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500 font-bold">•</span>
+                      <span className="font-bold text-green-500">•</span>
                       <span>
                         Executed a complete redesign of the product navigation,
                         handling 100% of the development to implement
@@ -61,16 +62,16 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500 font-bold">•</span>
+                      <span className="font-bold text-green-500">•</span>
                       <span>
                         Delivered high-quality work on a large critical feature,
-                        assisted other teams with their projects, and contributed
-                        to the strategic planning of the company&apos;s
-                        next-generation platform.
+                        assisted other teams with their projects, and
+                        contributed to the strategic planning of the
+                        company&apos;s next-generation platform.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500 font-bold">•</span>
+                      <span className="font-bold text-green-500">•</span>
                       <span>
                         Improved codebase stability and team efficiency by
                         resolving longstanding frontend bugs and leading
@@ -78,14 +79,15 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-green-500 font-bold">•</span>
+                      <span className="font-bold text-green-500">•</span>
                       <span>
-                        Regularly collaborate with PMs, designers, and backend teams to align technical solutions with business needs.
+                        Regularly collaborate with PMs, designers, and backend
+                        teams to align technical solutions with business needs.
                       </span>
                     </li>
                   </ul>
                 </div>
-                
+
                 <p>
                   My manager recognized this impact, noting my contributions as
                   &quot;essential to our success&quot; and highlighting my rapid
@@ -94,32 +96,41 @@ export default function WorkHistory() {
               </div>
             </div>
 
-
             {/* Philosophy Section */}
-            <div className="bg-gradient-to-r from-blue-50 to-emerald-50 dark:from-blue-900/20 dark:to-emerald-900/20 rounded-xl p-8">
-              <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-6">
+            <div className="rounded-xl bg-gradient-to-r from-blue-50 to-emerald-50 p-8 dark:from-blue-900/20 dark:to-emerald-900/20">
+              <h2 className="mb-6 text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                 What Drives My Work
               </h2>
               <div className="space-y-4 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
-                  I thrive in environments where I can take ownership of problems and see them through to completion. Whether it&apos;s stepping up during challenging times, mentoring team members, or shipping features under pressure, I&apos;m motivated by creating impact that extends beyond just writing code.
+                  I thrive in environments where I can take ownership of
+                  problems and see them through to completion. Whether it&apos;s
+                  stepping up during challenging times, mentoring team members,
+                  or shipping features under pressure, I&apos;m motivated by
+                  creating impact that extends beyond just writing code.
                 </p>
                 <p>
-                  The combination of technical depth and cross-functional collaboration has become my signature approach. I don&apos;t just build what&apos;s asked—I partner with teams to build what&apos;s needed, often anticipating requirements before they&apos;re articulated.
+                  The combination of technical depth and cross-functional
+                  collaboration has become my signature approach. I don&apos;t
+                  just build what&apos;s asked, I partner with teams to build
+                  what&apos;s needed, often anticipating requirements before
+                  they&apos;re articulated.
                 </p>
                 <p>
-                  This mindset has prepared me for senior engineering roles where product ownership, team leadership, and autonomous execution are not just valued—they&apos;re essential.
+                  This mindset has prepared me for senior engineering roles
+                  where product ownership, team leadership, and autonomous
+                  execution are not just valued, they&apos;re essential.
                 </p>
               </div>
             </div>
 
             {/* American Express Section */}
             <div className="border-l-4 border-cyan-500 pl-6">
-              <div className="flex flex-col gap-2 mb-6">
+              <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   UI Engineer
                 </h2>
-                <h3 className="text-xl text-cyan-600 dark:text-cyan-400 font-semibold">
+                <h3 className="text-xl font-semibold text-cyan-600 dark:text-cyan-400">
                   American Express
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -137,28 +148,31 @@ export default function WorkHistory() {
                   developers.
                 </p>
 
-                <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
-                  <h4 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
+                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Key Contributions
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-cyan-500 font-bold">•</span>
+                      <span className="font-bold text-cyan-500">•</span>
                       <span>
                         Led the front-end effort for the successful integration
                         of FSSO within the One App micro-frontend architecture.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-cyan-500 font-bold">•</span>
+                      <span className="font-bold text-cyan-500">•</span>
                       <span>
-                        Advocated for best practices in accessibility and performance.
+                        Advocated for best practices in accessibility and
+                        performance.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-cyan-500 font-bold">•</span>
+                      <span className="font-bold text-cyan-500">•</span>
                       <span>
-                        Refactored our micro frontend, reducing overall code by at least 50% while keeping the product highly performant.
+                        Refactored our micro frontend, reducing overall code by
+                        at least 50% while keeping the product highly
+                        performant.
                       </span>
                     </li>
                   </ul>
@@ -174,11 +188,11 @@ export default function WorkHistory() {
 
             {/* Formidable Section */}
             <div className="border-l-4 border-rose-500 pl-6">
-              <div className="flex flex-col gap-2 mb-6">
+              <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Software Engineer
                 </h2>
-                <h3 className="text-xl text-rose-600 dark:text-rose-400 font-semibold">
+                <h3 className="text-xl font-semibold text-rose-600 dark:text-rose-400">
                   Formidable
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -189,16 +203,18 @@ export default function WorkHistory() {
               <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400">
                 <p>
                   As a consultant at a leading JavaScript firm, I delivered
-                  high-impact solutions for enterprise clients. Hired as the &quot;JavaScript experts,&quot; we were entrusted to guide our client&apos;s engineers on best practices.
+                  high-impact solutions for enterprise clients. Hired as the
+                  &quot;JavaScript experts,&quot; we were entrusted to guide our
+                  client&apos;s engineers on best practices.
                 </p>
 
-                <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
-                  <h4 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
+                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Client Projects
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 font-bold">•</span>
+                      <span className="font-bold text-rose-500">•</span>
                       <span>
                         Successfully migrated Fabletics&apos; e-commerce
                         platform to React/Next.js, improving site performance
@@ -206,7 +222,7 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 font-bold">•</span>
+                      <span className="font-bold text-rose-500">•</span>
                       <span>
                         Built a data analysis tool for the T-Mobile Home
                         Internet sales team, resulting in a 20% increase in
@@ -214,15 +230,17 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 font-bold">•</span>
+                      <span className="font-bold text-rose-500">•</span>
                       <span>
-                        Delivered scalable frontend solutions across multiple enterprise-grade applications.
+                        Delivered scalable frontend solutions across multiple
+                        enterprise-grade applications.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-rose-500 font-bold">•</span>
+                      <span className="font-bold text-rose-500">•</span>
                       <span>
-                        Mentored engineers through code reviews and knowledge-sharing sessions, contributing to team growth.
+                        Mentored engineers through code reviews and
+                        knowledge-sharing sessions, contributing to team growth.
                       </span>
                     </li>
                   </ul>
@@ -232,11 +250,11 @@ export default function WorkHistory() {
 
             {/* Early Career Section */}
             <div className="border-l-4 border-emerald-500 pl-6">
-              <div className="flex flex-col gap-2 mb-6">
+              <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Frontend Developer
                 </h2>
-                <h3 className="text-xl text-emerald-600 dark:text-emerald-400 font-semibold">
+                <h3 className="text-xl font-semibold text-emerald-600 dark:text-emerald-400">
                   Early Career
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -248,25 +266,25 @@ export default function WorkHistory() {
                 <p>
                   My early career was defined by building production
                   applications under tight deadlines for startups and agencies.
-                  This period taught me the importance of shipping quickly
-                  while maintaining code quality—a balance I&apos;ve carried
+                  This period taught me the importance of shipping quickly while
+                  maintaining code quality, a balance I&apos;ve carried
                   throughout my career.
                 </p>
 
-                <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-lg p-6">
-                  <h4 className="font-semibold text-zinc-800 dark:text-zinc-100 mb-3">
+                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Foundation-Building Experience
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="text-emerald-500 font-bold">•</span>
+                      <span className="font-bold text-emerald-500">•</span>
                       <span>
                         Developed a React Native app serving 100k+ users for an
                         agency, improving user engagement and retention.
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="text-emerald-500 font-bold">•</span>
+                      <span className="font-bold text-emerald-500">•</span>
                       <span>
                         Created a design system and component library for a real
                         estate startup, resulting in a more consistent and
@@ -282,4 +300,4 @@ export default function WorkHistory() {
       </Container>
     </>
   )
-} 
+}

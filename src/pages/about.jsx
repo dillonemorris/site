@@ -70,10 +70,10 @@ export default function About() {
                 a deep understanding of user needs and business impact. I
                 leverage AI tools like Cursor and GPT to accelerate both
                 delivery speed and code quality, allowing me to focus on solving
-                complex problems rather than repetitive tasks. Above all, I{"'"}m
-                passionate about shipping products that people actually use—not
-                just building them. Every line of code should serve a purpose in
-                creating meaningful user experiences.
+                complex problems rather than repetitive tasks. Above all, I{"'"}
+                m passionate about shipping products that people actually use,
+                not just building them. Every line of code should serve a
+                purpose in creating meaningful user experiences.
               </p>
 
               <div>
@@ -102,7 +102,7 @@ export default function About() {
                         </h3>
                         <p className="text-sm text-zinc-600 dark:text-zinc-400">
                           From PostgreSQL schemas and API design to React
-                          components and deployment pipelines — I handle the
+                          components and deployment pipelines, I handle the
                           complete stack with confidence.
                         </p>
                       </div>
