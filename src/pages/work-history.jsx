@@ -81,6 +81,16 @@ export default function WorkHistory() {
                     <li className="flex items-start gap-2">
                       <span className="font-bold text-green-500">•</span>
                       <span>
+                        Led the conversion of our codebase to a strict TypeScript
+                        configuration, systematically fixing 600+ type errors in
+                        the process. This effort significantly improved developer
+                        experience, code quality, and caught potential bugs before
+                        they reached production.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="font-bold text-green-500">•</span>
+                      <span>
                         Regularly collaborate with PMs, designers, and backend
                         teams to align technical solutions with business needs.
                       </span>
@@ -115,6 +125,15 @@ export default function WorkHistory() {
                   just build what&apos;s asked, I partner with teams to build
                   what&apos;s needed, often anticipating requirements before
                   they&apos;re articulated.
+                </p>
+                <p>
+                  I view thorough, collaborative code reviews as one of the most
+                  important parts of my process in helping fellow developers.
+                  A well-executed code review isn&apos;t just about catching
+                  bugs, it&apos;s about knowledge sharing, teaching best
+                  practices, and building stronger teams. I take pride in
+                  providing thoughtful feedback that helps developers grow
+                  while maintaining high code quality standards.
                 </p>
                 <p>
                   This mindset has prepared me for senior engineering roles

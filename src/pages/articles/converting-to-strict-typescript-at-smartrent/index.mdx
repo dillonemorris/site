@@ -1,0 +1,269 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Dillon Morris',
+  date: '2025-12-29',
+  title: 'Enabling strictNullChecks: A 600-Error Migration at SmartRent',
+  description:
+    'A deep dive into incrementally enabling strictNullChecks across a large codebase using a directory-by-directory approach, including the technical challenges, collaborative process, and lasting impact on developer experience.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Earlier this year at SmartRent, I led an initiative to enable `strictNullChecks` across our frontend codebase. What started as an effort to prevent null reference errors turned into a comprehensive migration that addressed nearly 600 type errors and fundamentally improved our developer experience. This is the story of how we did it, what we learned, and why it mattered.
+
+## The Starting Point
+
+When I joined SmartRent, our TypeScript configuration didn't have `strictNullChecks` enabled. While we were using TypeScript, the compiler wasn't enforcing null safety. This meant we were getting some benefits of type safety, but we were missing out on catching the most common class of JavaScript runtime errors: null reference exceptions.
+
+Running `yarn tsc --noEmit --strictNullChecks` revealed the scope of the problem: **599 errors** across the codebase. Functions that could return `null` but weren't typed that way, property accesses on potentially undefined objects, and API responses that assumed data would always be present.
+
+## Why strictNullChecks?
+
+Null reference errors are what Tony Hoare (the inventor of null) famously called his "billion dollar mistake." They're the #1 cause of JavaScript runtime crashes, and `strictNullChecks` is TypeScript's solution.
+
+With `strictNullChecks` enabled, the compiler enforces:
+
+- **Explicit null handling**: You can't access properties on potentially null values without checking first
+- **Accurate function signatures**: Return types must include `null` or `undefined` when appropriate
+- **Safer API responses**: Forces you to handle cases where data might not exist
+- **Self-documenting code**: Types clearly show what can and can't be null
+
+The goal wasn't just to satisfy a linter, it was to prevent production crashes and create a codebase where developers could move faster with confidence, knowing that the compiler would catch null-related mistakes before they became runtime errors.
+
+## Planning the Migration
+
+Before diving in, we needed a strategy. Enabling `strictNullChecks` across the entire codebase at once would mean 599 errors to fix in a single PR, overwhelming and risky. We needed a way to break this down into manageable chunks.
+
+### Phase 1: Directory-by-Directory Migration
+
+The key insight was using a separate `tsconfig.strict.json` with a targeted `include` array. Instead of enabling `strictNullChecks` globally, we only checked specific directories:
+
+```json
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": true
+  },
+  "include": [
+    "assets/js/lib/**/*",
+    "assets/js/react/types/**/*",
+    "assets/js/react/common/utils/**/*"
+  ]
+}
+```
+
+This gave us two commands:
+- `yarn tsc --noEmit --strictNullChecks`, shows all 599 errors (the destination)
+- `yarn tsc -p tsconfig.strict.json --noEmit`, shows only errors in included directories (the current work)
+
+By adding directories to the `include` array incrementally, we could tackle 25-50 errors per PR instead of 600.
+
+### Phase 2: Tiered Directory Approach
+
+We organized directories into tiers based on risk and impact:
+
+1. **Tier 1 (Low-risk, High-impact)**: Core utilities, type definitions, and library functions. These had minimal dependencies and were used everywhere.
+2. **Tier 2 (Medium complexity)**: Hooks, reusable components, and API query functions.
+3. **Tier 3 (Complex domains)**: Business logic bundles and feature-specific code.
+
+Starting with Tier 1 meant we could establish patterns early and catch the most widespread issues first.
+
+### Phase 3: Establish Patterns
+
+As we fixed errors, we documented patterns and best practices for the team. This included:
+- When to use optional chaining (`?.`) vs nullish coalescing (`??`)
+- How to write type guards for complex null checks
+- Patterns for handling API responses safely
+- Guidelines for function signatures that might return null
+
+## The Technical Challenges
+
+### Common Error Patterns
+
+The `strictNullChecks` errors fell into predictable categories. Here are the patterns we encountered most frequently:
+
+**Null Assignment to Non-Null Type:**
+
+```typescript
+// Error: Type 'null' is not assignable to type 'string'
+const token: string = getToken() // getToken() returns string | null
+
+// Fix: Handle the null case
+const token = getToken() ?? 'default-value'
+```
+
+**Possibly Undefined Property Access:**
+
+```typescript
+// Error: Object is possibly 'undefined'
+const length = items.length // items is Item[] | undefined
+
+// Fix: Optional chaining with fallback
+const length = items?.length ?? 0
+```
+
+**Array Methods on Possibly Undefined Arrays:**
+
+```typescript
+// Error: Object is possibly 'undefined'
+const mapped = items.map(item => item.id) // items is Item[] | undefined
+
+// Fix: Guard with fallback
+const mapped = items?.map(item => item.id) ?? []
+```
+
+### API Response Types
+
+Our API responses weren't consistently typed for null safety. We established a pattern for handling responses:
+
+```typescript
+// Before: Unsafe - assumes data always exists
+const response = await fetchUser(id)
+const name = response.data.name
+
+// After: Type-safe with explicit null handling
+interface UserResponse {
+  data: User | null
+  error?: string
+}
+
+const response: UserResponse = await fetchUser(id)
+if (!response.data) {
+  throw new Error(response.error || 'User not found')
+}
+const name = response.data.name
+```
+
+### React Component State
+
+Components often had state that could be null during loading. We made these states explicit:
+
+```typescript
+// Before: Missing loading and error states
+interface ComponentProps {
+  data: DataType
+}
+
+// After: Explicitly handle all states
+interface ComponentProps {
+  data: DataType | null
+  isLoading: boolean
+  error: string | null
+}
+```
+
+## The Collaborative Process
+
+This wasn't a solo effort. Converting a codebase this size required coordination with the entire team. Here's how we made it work:
+
+### Communication and Planning
+
+I started by documenting the plan and getting buy-in from the team. We discussed:
+- Why this was important
+- How it would affect their day-to-day work
+- What the timeline would look like
+- How we'd handle the transition period
+
+### Code Reviews as Teaching Moments
+
+This is where thorough, collaborative code reviews became essential. Every PR that fixed TypeScript errors was an opportunity to:
+- Share knowledge about TypeScript best practices
+- Discuss why certain patterns are better than others
+- Help team members understand the type system better
+- Ensure consistency across the codebase
+
+I made it a point to provide detailed feedback, not just "fix this error," but "here's why this pattern is better and how it prevents bugs." This educational approach helped the team level up their TypeScript skills while we fixed the codebase.
+
+### Incremental Rollout
+
+We didn't block all PRs until everything was fixed. Instead, we:
+- Fixed errors in areas we were already working on
+- Prioritized high-traffic code paths
+- Allowed gradual migration of less-critical areas
+
+This meant the team could continue shipping features while we improved the codebase.
+
+## The Impact
+
+### Zero Negative Impact on Users
+
+One concern we addressed early: **this migration had zero negative impact on end users.** TypeScript types are completely removed at runtime, the JavaScript that runs in browsers is identical. We were adding safety checks that should have been there anyway.
+
+In fact, we caught real bugs that could have crashed in production:
+- Functions that could return `null` but were treated as always returning values
+- API calls that assumed data would always be present
+- Property accesses on objects that might not exist
+
+**We weren't creating bugs, we were fixing them.**
+
+### Developer Experience Improvements
+
+The immediate impact on developer experience was significant:
+
+**Faster Debugging**: When something null-related broke, TypeScript pointed us to the exact problem. No more hunting through runtime stack traces to find where a null value originated.
+
+**Safer Refactoring**: With null checks enforced by the compiler, we could refactor with confidence. Change a function to return `null` in a new case? The compiler shows every call site that needs updating.
+
+**Self-Documenting Code**: Types became clear documentation. `function processUser(user: User | null)` clearly handles null. `function requireUser(user: User)` clearly requires a non-null value.
+
+**Better Onboarding**: New team members could understand the codebase faster, and more importantly, couldn't accidentally introduce null reference crashes.
+
+### Team Growth
+
+The collaborative process helped the team improve their TypeScript skills. By the end, everyone was more comfortable with:
+- Optional chaining (`?.`) and nullish coalescing (`??`)
+- Type guards and type narrowing
+- Thinking explicitly about null cases
+- Writing safer code from the start
+
+This wasn't just about fixing the codebase, it was about leveling up the entire team.
+
+## Lessons Learned
+
+### The Include Array Strategy Works
+
+The key to making this migration manageable was the targeted `include` array in `tsconfig.strict.json`. Instead of facing 599 errors at once, we could tackle 25-50 per PR. Each directory we added to the include array was a discrete, reviewable chunk of work.
+
+### Tiered Prioritization Matters
+
+Starting with Tier 1 (utilities, types, library code) paid dividends. These files were used everywhere, so fixing them first meant:
+- Establishing patterns early that propagated to other fixes
+- Catching the most widespread null issues first
+- Building team confidence before tackling complex business logic
+
+### Code Reviews Are Essential
+
+This project reinforced my belief that thorough code reviews are one of the most important parts of helping fellow developers. Every PR was a chance to share TypeScript patterns, discuss why certain approaches are safer, and ensure consistency. The educational aspect was just as valuable as the code changes.
+
+### Documentation Matters
+
+We created two key documents: a migration guide with common patterns and fixes, and an explanation document addressing safety concerns. When someone encountered a new error pattern, they had a reference. When stakeholders asked about risk, we had clear answers.
+
+### CI Prevents Regressions
+
+Once directories were migrated, our CI pipeline ran the strict check on every PR. This meant migrated directories stayed migrated, no backsliding. New code in strict directories was checked automatically.
+
+### It's Worth the Effort
+
+599 errors sounds daunting, but breaking it into 25-50 error PRs made it manageable. And the benefits compound: every new feature is built on a null-safe foundation. Every bug we catch at compile time is a bug that doesn't crash in production.
+
+## The Result
+
+As directories are migrated, they're added to the `include` array and protected by CI. New code in migrated directories is null-safe by default. The patterns we established make it easy to maintain that quality as we work through the remaining tiers.
+
+More importantly, the collaborative process strengthened our team. We learned together, we improved our codebase together, and we established practices that make us all better developers.
+
+## Conclusion
+
+Enabling `strictNullChecks` isn't just a technical exercise, it's an investment in preventing the most common class of JavaScript runtime errors. The 599 errors we're addressing aren't just numbers; they're potential production crashes that the compiler now catches before they reach users.
+
+If you're considering a similar migration, my advice is:
+1. **Use a separate tsconfig with targeted includes**, don't face all errors at once
+2. **Tier your directories by risk and impact**, start with utilities and types
+3. **Keep PRs manageable**, 25-50 errors is a reviewable chunk
+4. **Document patterns as you go**, create a team reference for common fixes
+5. **Leverage CI**, prevent regressions in migrated directories
+6. **Make it collaborative**, use code reviews as teaching moments
+
+The effort is significant, but the payoff, in terms of fewer production crashes, better developer experience, and team growth, is worth it. And remember, thorough, collaborative code reviews aren't just about catching bugs; they're about helping fellow developers grow and building stronger teams.
