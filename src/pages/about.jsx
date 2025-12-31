@@ -9,7 +9,7 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import { CodeBracketIcon, CpuChipIcon } from '@heroicons/react/24/outline'
+import { CodeBracketIcon, WrenchScrewdriverIcon, ChatBubbleLeftRightIcon, PaintBrushIcon } from '@heroicons/react/24/outline'
 import portraitImage from '@/images/photos/portrait.jpg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
@@ -67,34 +67,89 @@ export default function About() {
               <p>
                 I believe in pragmatic engineering balanced with
                 product-thinking. My approach combines technical excellence with
-                a deep understanding of user needs and business impact. I
-                leverage AI tools like Cursor and GPT to accelerate both
-                delivery speed and code quality, allowing me to focus on solving
-                complex problems rather than repetitive tasks. Above all, I{"'"}
-                m passionate about shipping products that people actually use,
-                not just building them. Every line of code should serve a
-                purpose in creating meaningful user experiences.
+                a deep understanding of user needs and business impact. I&apos;m
+                passionate about developer experience and tooling, creating
+                workflows and systems that make developers more productive and
+                joyful. Above all, I&apos;m passionate about shipping products
+                that people actually use, not just building them. Every line of
+                code should serve a purpose in creating meaningful user
+                experiences.
+              </p>
+              <p>
+                I view thorough, collaborative code reviews as one of the most
+                important parts of my process in helping fellow developers. A
+                well-executed code review isn&apos;t just about catching bugs, it&apos;s
+                about knowledge sharing, teaching best practices, and building
+                stronger teams. I take pride in providing thoughtful feedback
+                that helps developers grow while maintaining high code quality
+                standards.
               </p>
 
               <div>
                 <h2 className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-100">
-                  Full-Stack & AI Work
+                  Developer Experience & Full-Stack Development
                 </h2>
 
                 <div className="space-y-12">
                   <p>
-                    Working with modern AI tools like OpenAI{"'"}s API, I{"'"}ve
-                    integrated intelligent features into production
-                    applications, handling everything from prompt optimization
-                    to response processing. This includes building smart writing
-                    assistants, implementing contextual AI recommendations, and
-                    creating seamless user experiences that leverage AI
-                    capabilities without overwhelming the interface.
+                    I focus on building developer-friendly tools and systems that
+                    improve productivity and code quality. From setting up strict
+                    TypeScript configurations that catch errors before they reach
+                    production, to designing beautiful and usable interfaces that
+                    delight users, I work across the entire stack to create
+                    exceptional experiences for both developers and end users.
                   </p>
                   <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex items-start gap-3">
                       <div className="mt-1 flex-shrink-0">
-                        <CodeBracketIcon className="h-6 w-6 text-emerald-500" />
+                        <ChatBubbleLeftRightIcon className="h-6 w-6 text-blue-500" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                          Code Reviews & Collaboration
+                        </h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          I view thorough, collaborative code reviews as essential
+                          to helping fellow developers grow. My reviews focus on
+                          knowledge sharing, best practices, and building stronger
+                          teams while maintaining high code quality.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <WrenchScrewdriverIcon className="h-6 w-6 text-emerald-500" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                          Developer Experience & Tooling
+                        </h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          I&apos;m passionate about improving developer workflows through
+                          thoughtful tooling, strict TypeScript configurations, and
+                          systems that catch errors early and make developers more
+                          productive.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <PaintBrushIcon className="h-6 w-6 text-purple-500" />
+                      </div>
+                      <div>
+                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
+                          Beautiful, Usable Interfaces
+                        </h3>
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                          I design and build interfaces that are both beautiful and
+                          highly functional, focusing on user experience and
+                          accessibility to create products people love to use.
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="mt-1 flex-shrink-0">
+                        <CodeBracketIcon className="h-6 w-6 text-cyan-500" />
                       </div>
                       <div>
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
@@ -104,21 +159,6 @@ export default function About() {
                           From PostgreSQL schemas and API design to React
                           components and deployment pipelines, I handle the
                           complete stack with confidence.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="mt-1 flex-shrink-0">
-                        <CpuChipIcon className="h-6 w-6 text-blue-500" />
-                      </div>
-                      <div>
-                        <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
-                          AI Integration & Product
-                        </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                          Practical experience integrating AI APIs, optimizing
-                          prompts, and building intelligent features that users
-                          actually want to use.
                         </p>
                       </div>
                     </div>

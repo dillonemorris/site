@@ -210,23 +210,24 @@ export default function Home({ articles }) {
   return (
     <>
       <Head>
-        <title>Senior Engineer. Full-stack builder. AI enthusiast.</title>
+        <title>Senior Engineer. Developer experience advocate. Interface designer.</title>
         <meta
           name="description"
-          content="Senior Engineer. Full-stack builder. AI enthusiast."
+          content="Senior Engineer. Developer experience advocate. Interface designer."
         />
       </Head>
       <Container className="mt-9">
         <div className="max-w-3xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Senior Engineer. Full-stack builder. AI enthusiast.
+            Senior Engineer. Developer experience advocate. Interface designer.
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
             I design and build modern web apps from end to end, with a focus on
-            clear {''}
-            {/* eslint-disable-next-line react/no-unescaped-entities */}
-            UX, clean architecture, and practical AI integration. I'm driven by
-            curiosity, fast iteration, and a bias toward shipping real value.
+            developer experience, thoughtful tooling, and beautiful, usable
+            interfaces. I&apos;m deeply collaborative, and I view thorough, thoughtful
+            code reviews as one of the most important ways I help fellow developers
+            grow. I&apos;m driven by curiosity, fast iteration, and a bias toward shipping
+            real value.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink

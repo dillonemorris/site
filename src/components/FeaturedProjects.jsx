@@ -5,7 +5,7 @@ const projects = [
   {
     title: 'Hey Brevity',
     description:
-      'An AI-powered writing assistant for personal and professional communication.',
+      'A writing assistant for personal and professional communication, designed to help users communicate more effectively.',
     screenshots: [],
     videoLink: '',
     stack: ['Next.js', 'Supabase', 'OpenAI'],
@@ -15,7 +15,7 @@ const projects = [
   {
     title: 'Wrapped',
     description:
-      'A thoughtful relationship app with smart reminders and lightweight recipient profiles.',
+      'A thoughtful relationship app with smart reminders and lightweight recipient profiles to help you stay connected with the people who matter.',
     screenshots: [],
     videoLink: '',
     stack: ['React Native', 'Supabase', 'OpenAI'],
@@ -59,7 +59,7 @@ function TechBadge({ tech, isHighlighted = false }) {
 }
 
 function ProjectCard({ project }) {
-  const highlightedTechs = ['OpenAI', 'Serverless', 'AI', 'Machine Learning']
+  const highlightedTechs = ['Serverless', 'TypeScript']
 
   return (
     <Card as="li">
