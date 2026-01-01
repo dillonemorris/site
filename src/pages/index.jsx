@@ -224,9 +224,7 @@ export default function Home({ articles }) {
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400 font-mono">
             I design and build modern web apps from end to end, with a focus on
             developer experience, thoughtful tooling, and beautiful, usable
-            interfaces. I&apos;m deeply collaborative, and I view thorough, thoughtful
-            code reviews as one of the most important ways I help fellow developers
-            grow. I&apos;m driven by curiosity, fast iteration, and a bias toward shipping
+            interfaces. I&apos;m deeply collaborative and driven by curiosity, fast iteration, and a bias toward shipping
             real value.
           </p>
           <div className="mt-6 flex gap-6">
