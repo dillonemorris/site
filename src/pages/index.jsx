@@ -129,7 +129,7 @@ function Resume() {
 
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-greptile-green">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
       </h2>
@@ -150,7 +150,7 @@ function Resume() {
               </dd>
               <dt className="sr-only">Date</dt>
               <dd
-                className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+                className="ml-auto text-xs text-zinc-500 dark:text-zinc-400"
                 aria-label={`${role.start.label ?? role.start} until ${
                   role.end.label ?? role.end
                 }`}
@@ -218,10 +218,10 @@ export default function Home({ articles }) {
       </Head>
       <Container className="mt-9">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:text-5xl">
             Senior Engineer. Developer experience advocate. Interface designer.
           </h1>
-          <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400 font-mono">
             I design and build modern web apps from end to end, with a focus on
             developer experience, thoughtful tooling, and beautiful, usable
             interfaces. I&apos;m deeply collaborative, and I view thorough, thoughtful

@@ -17,9 +17,9 @@ function SocialLink({ className, href, children, icon: Icon }) {
     <li className={clsx(className, 'flex')}>
       <Link
         href={href}
-        className="group flex text-sm font-medium text-zinc-800 transition hover:text-blue-500 dark:text-zinc-200 dark:hover:text-blue-500"
+        className="group flex text-sm font-medium text-zinc-800 transition hover:text-greptile-green dark:text-zinc-200 dark:hover:text-greptile-green"
       >
-        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-blue-500" />
+        <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-greptile-green" />
         <span className="ml-4">{children}</span>
       </Link>
     </li>
@@ -63,7 +63,7 @@ export default function About() {
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               My Engineering Philosophy
             </h1>
-            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
+            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400 font-mono">
               <p>
                 I believe in pragmatic engineering balanced with
                 product-thinking. My approach combines technical excellence with
@@ -102,13 +102,13 @@ export default function About() {
                   <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex items-start gap-3">
                       <div className="mt-1 flex-shrink-0">
-                        <ChatBubbleLeftRightIcon className="h-6 w-6 text-blue-500" />
+                        <ChatBubbleLeftRightIcon className="h-6 w-6 text-greptile-green" />
                       </div>
                       <div>
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Code Reviews & Collaboration
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
                           I view thorough, collaborative code reviews as essential
                           to helping fellow developers grow. My reviews focus on
                           knowledge sharing, best practices, and building stronger
@@ -124,7 +124,7 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Developer Experience & Tooling
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
                           I&apos;m passionate about improving developer workflows through
                           thoughtful tooling, strict TypeScript configurations, and
                           systems that catch errors early and make developers more
@@ -140,7 +140,7 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Beautiful, Usable Interfaces
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
                           I design and build interfaces that are both beautiful and
                           highly functional, focusing on user experience and
                           accessibility to create products people love to use.
@@ -155,7 +155,7 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           End-to-End Development
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400">
+                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
                           From PostgreSQL schemas and API design to React
                           components and deployment pipelines, I handle the
                           complete stack with confidence.

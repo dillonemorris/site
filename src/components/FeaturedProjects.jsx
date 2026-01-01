@@ -78,7 +78,7 @@ function ProjectCard({ project }) {
           ))}
         </div>
       </div>
-      <div className="relative z-10 mt-4 flex items-center space-x-4 text-sm font-medium text-blue-500">
+      <div className="relative z-10 mt-4 flex items-center space-x-4 text-sm font-medium text-greptile-green">
         {project.liveUrl && project.liveUrl !== '#' && (
           <a
             href={project.liveUrl}
@@ -110,7 +110,7 @@ export function FeaturedProjects() {
       <h2 className="text-2xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">
         Featured Side Projects
       </h2>
-      <p className="mt-4 text-base text-zinc-600 dark:text-zinc-400">
+      <p className="mt-4 text-base text-zinc-600 dark:text-zinc-400 font-mono">
         Here are some personal side projects I&apos;ve built in my spare time that I&apos;m most proud of.
       </p>
       <ul
