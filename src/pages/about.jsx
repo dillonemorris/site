@@ -75,30 +75,9 @@ export default function About() {
                 code should serve a purpose in creating meaningful user
                 experiences.
               </p>
-              <p>
-                I view thorough, collaborative code reviews as one of the most
-                important parts of my process in helping fellow developers. A
-                well-executed code review isn&apos;t just about catching bugs, it&apos;s
-                about knowledge sharing, teaching best practices, and building
-                stronger teams. I take pride in providing thoughtful feedback
-                that helps developers grow while maintaining high code quality
-                standards.
-              </p>
 
               <div>
-                <h2 className="mb-4 text-xl font-semibold text-zinc-800 dark:text-zinc-100">
-                  Developer Experience & Full-Stack Development
-                </h2>
-
                 <div className="space-y-12">
-                  <p>
-                    I focus on building developer-friendly tools and systems that
-                    improve productivity and code quality. From setting up strict
-                    TypeScript configurations that catch errors before they reach
-                    production, to designing beautiful and usable interfaces that
-                    delight users, I work across the entire stack to create
-                    exceptional experiences for both developers and end users.
-                  </p>
                   <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
                     <div className="flex items-start gap-3">
                       <div className="mt-1 flex-shrink-0">

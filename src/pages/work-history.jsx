@@ -13,7 +13,7 @@ export default function WorkHistory() {
       </Head>
       <Container className="mt-16 sm:mt-32">
         <header className="max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Work History
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400 font-mono">
@@ -27,10 +27,10 @@ export default function WorkHistory() {
             {/* SmartRent Section */}
             <div className="border-l-4 border-blue-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-greptile-green dark:text-greptile-green">
+                <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Senior Software Engineer
                 </h2>
-                <h3 className="text-xl font-semibold text-greptile-green dark:text-greptile-green">
+                <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400">
                   SmartRent
                 </h3>
                 <p className="text-sm text-zinc-500 dark:text-zinc-400">
@@ -38,7 +38,7 @@ export default function WorkHistory() {
                 </p>
               </div>
 
-              <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+              <div className="space-y-6 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
                   I own the frontend for SmartRent&apos;s flagship product,
                   which is responsible for the vast majority of the
@@ -49,12 +49,12 @@ export default function WorkHistory() {
                 </p>
 
                 <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
-                  <h4 className="mb-3 font-semibold text-greptile-green dark:text-greptile-green">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Performance Highlights
                   </h4>
                   <ul className="space-y-2 text-sm">
                     <li className="flex items-start gap-2">
-                      <span className="font-bold text-green-500">•</span>
+                      <span className="font-bold text-blue-500">•</span>
                       <span>
                         Executed a complete redesign of the product navigation,
                         handling 100% of the development to implement
@@ -62,7 +62,7 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="font-bold text-green-500">•</span>
+                      <span className="font-bold text-blue-500">•</span>
                       <span>
                         Delivered high-quality work on a large critical feature,
                         assisted other teams with their projects, and
@@ -71,7 +71,7 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="font-bold text-green-500">•</span>
+                      <span className="font-bold text-blue-500">•</span>
                       <span>
                         Improved codebase stability and team efficiency by
                         resolving longstanding frontend bugs and leading
@@ -79,7 +79,7 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="font-bold text-green-500">•</span>
+                      <span className="font-bold text-blue-500">•</span>
                       <span>
                         Led the conversion of our codebase to a strict TypeScript
                         configuration, systematically fixing 600+ type errors in
@@ -89,7 +89,7 @@ export default function WorkHistory() {
                       </span>
                     </li>
                     <li className="flex items-start gap-2">
-                      <span className="font-bold text-green-500">•</span>
+                      <span className="font-bold text-blue-500">•</span>
                       <span>
                         Regularly collaborate with PMs, designers, and backend
                         teams to align technical solutions with business needs.
@@ -108,10 +108,10 @@ export default function WorkHistory() {
 
             {/* Philosophy Section */}
             <div className="rounded-xl bg-gradient-to-r from-blue-50 to-emerald-50 p-8 dark:from-blue-900/20 dark:to-emerald-900/20">
-              <h2 className="mb-6 text-2xl font-bold text-greptile-green dark:text-greptile-green">
+              <h2 className="mb-6 text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                 What Drives My Work
               </h2>
-              <div className="space-y-4 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+              <div className="space-y-4 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
                   I thrive in environments where I can take ownership of
                   problems and see them through to completion. Whether it&apos;s
@@ -146,7 +146,7 @@ export default function WorkHistory() {
             {/* American Express Section */}
             <div className="border-l-4 border-cyan-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-greptile-green dark:text-greptile-green">
+                <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   UI Engineer
                 </h2>
                 <h3 className="text-xl font-semibold text-cyan-600 dark:text-cyan-400">
@@ -157,7 +157,7 @@ export default function WorkHistory() {
                 </p>
               </div>
 
-              <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+              <div className="space-y-6 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
                   I spearheaded the design and development of the Federated
                   Single Sign-On (FSSO) feature, enabling third-party users to
@@ -168,7 +168,7 @@ export default function WorkHistory() {
                 </p>
 
                 <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
-                  <h4 className="mb-3 font-semibold text-greptile-green dark:text-greptile-green">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Key Contributions
                   </h4>
                   <ul className="space-y-2 text-sm">
@@ -208,7 +208,7 @@ export default function WorkHistory() {
             {/* Formidable Section */}
             <div className="border-l-4 border-rose-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-greptile-green dark:text-greptile-green">
+                <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Software Engineer
                 </h2>
                 <h3 className="text-xl font-semibold text-rose-600 dark:text-rose-400">
@@ -219,7 +219,7 @@ export default function WorkHistory() {
                 </p>
               </div>
 
-              <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+              <div className="space-y-6 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
                   As a consultant at a leading JavaScript firm, I delivered
                   high-impact solutions for enterprise clients. Hired as the
@@ -228,7 +228,7 @@ export default function WorkHistory() {
                 </p>
 
                 <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
-                  <h4 className="mb-3 font-semibold text-greptile-green dark:text-greptile-green">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Client Projects
                   </h4>
                   <ul className="space-y-2 text-sm">
@@ -270,7 +270,7 @@ export default function WorkHistory() {
             {/* Early Career Section */}
             <div className="border-l-4 border-emerald-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
-                <h2 className="text-2xl font-bold text-greptile-green dark:text-greptile-green">
+                <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Frontend Developer
                 </h2>
                 <h3 className="text-xl font-semibold text-emerald-600 dark:text-emerald-400">
@@ -281,7 +281,7 @@ export default function WorkHistory() {
                 </p>
               </div>
 
-              <div className="space-y-6 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+              <div className="space-y-6 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
                   My early career was defined by building production
                   applications under tight deadlines for startups and agencies.
@@ -291,7 +291,7 @@ export default function WorkHistory() {
                 </p>
 
                 <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
-                  <h4 className="mb-3 font-semibold text-greptile-green dark:text-greptile-green">
+                  <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Foundation-Building Experience
                   </h4>
                   <ul className="space-y-2 text-sm">
