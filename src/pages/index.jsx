@@ -7,6 +7,7 @@ import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { FeaturedProjects } from '@/components/FeaturedProjects'
+import { TypingEffect } from '@/components/TypingEffect'
 import {
   InstagramIcon,
   GitHubIcon,
@@ -218,8 +219,11 @@ export default function Home({ articles }) {
       </Head>
       <Container className="mt-9">
         <div className="max-w-3xl">
-          <h1 className="text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:text-5xl">
-            Senior Engineer. Developer experience advocate. Interface designer.
+          <h1 className="text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:text-5xl sm:h-40 h-30">
+            <TypingEffect 
+              text="Senior Engineer. Developer experience advocate. Interface designer."
+              speed={50}
+            />
           </h1>
           <p className="mt-6 max-w-2xl text-base text-zinc-600 dark:text-zinc-400 font-mono">
             I design and build modern web apps from end to end, with a focus on
