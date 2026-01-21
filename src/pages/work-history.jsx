@@ -25,7 +25,7 @@ export default function WorkHistory() {
         <div className="mt-16 sm:mt-20">
           <div className="space-y-20">
             {/* SmartRent Section */}
-            <div className="border-l-4 border-blue-500 pl-6">
+            <div className="border-l-2 border-blue-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Senior Software Engineer
@@ -40,9 +40,9 @@ export default function WorkHistory() {
 
               <div className="space-y-6 text-base text-zinc-800 dark:text-zinc-100 font-mono">
                 <p>
-                  I own the frontend for SmartRent&apos;s flagship product,
+                  I work on the frontend for SmartRent&apos;s flagship product,
                   which is responsible for the vast majority of the
-                  company&apos;s revenue. In a short period, I&apos;ve
+                  company&apos;s revenue. I&apos;ve
                   established myself as an integral team member and the go-to
                   resource for frontend development, making a significant impact
                   on our most challenging projects.
@@ -144,7 +144,7 @@ export default function WorkHistory() {
             </div>
 
             {/* American Express Section */}
-            <div className="border-l-4 border-cyan-500 pl-6">
+            <div className="border-l-2 border-cyan-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   UI Engineer
@@ -206,7 +206,7 @@ export default function WorkHistory() {
             </div>
 
             {/* Formidable Section */}
-            <div className="border-l-4 border-rose-500 pl-6">
+            <div className="border-l-2 border-rose-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Software Engineer
@@ -268,7 +268,7 @@ export default function WorkHistory() {
             </div>
 
             {/* Early Career Section */}
-            <div className="border-l-4 border-emerald-500 pl-6">
+            <div className="border-l-2 border-emerald-500 pl-6">
               <div className="mb-6 flex flex-col gap-2">
                 <h2 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                   Frontend Developer

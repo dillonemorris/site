@@ -12,12 +12,143 @@ export default (props) => <ArticleLayout meta={meta} {...props} />
 
 # Cursor Commands Setup Guide
 
-This guide will help you set up and configure Cursor commands for an enhanced development experience.
+I've been using Cursor commands for a few months now, and they've become essential for tasks I do repeatedly: code reviews, writing PR descriptions, and creating tickets. The trick is making them produce output you can actually use, not just generic templates that need heavy editing.
 
-## Overview
+For the official docs, see the [Cursor commands documentation](https://cursor.com/docs/context/commands). Here's what I've learned from actually using them.
 
-Cursor commands are powerful shortcuts that can help you work more efficiently in your editor. While many developers are familiar with Cursor prompts, commands can be just as useful for streamlining your workflow.
+## The Problem with Generic Commands
 
-## Getting Started
+When I first started using commands, I created ones that were too broad. They'd generate long checklists or verbose templates that I'd end up rewriting anyway. The breakthrough was realizing that commands work best when they're constrained: when they have strict rules about length, format, and focus.
 
-Content coming soon...
+## Three Commands I Actually Use
+
+These are the commands I use most often. Each one is designed to produce output that's ready to paste with minimal editing.
+
+### Review Command
+
+I use this to get quick, high-signal code review feedback. The key design decisions:
+
+- **Concise output**: Limits to 5 comments max, keeping each under 2 sentences
+- **Focused on issues**: Skips trivial style notes and avoids restating code
+- **Github-style format**: Outputs in a format ready to paste as PR comments
+
+```Markdown
+You are a senior software engineer reviewing a pull request. The attached changes are the pull request.
+
+Provide concise, high-signal feedback in the style of Github PR comments.
+
+**Rules:**
+
+- Keep each comment under 2 sentences.
+- Do not restate the code.
+- Focus only on potential issues or meaningful improvements.
+- Skip trivial style or formatting notes unless they impact readability.
+- Limit output to at most 5 comments unless critical issues exist.
+- Highlight potential bugs, edge cases, or readability issues.
+- Point out any missing documentation
+- Suggest concise improvements, not generic platitudes
+- Focus on clarity, maintainability, and developer experience
+
+Output format:
+[File: path/to/file.js]
+
+- Line XX: <Comment>
+- Line YY: <Comment>
+```
+
+**How I use it**: When reviewing a PR, I select the changed files and run `/review`. The output is usually 3-5 focused comments that I can paste directly into GitHub. The "under 2 sentences" rule keeps it scannable, and the "don't restate the code" rule means every comment adds value.
+
+### Create PR Command
+
+This generates PR descriptions that focus on user-facing changes rather than implementation details. The structure ensures reviewers and QA get what they need without technical noise.
+
+```Markdown
+Create a concise pull request title and description for the attached changes.
+
+The output should follow this format:
+
+Title:
+A short, action-oriented summary of the change.
+
+Description:
+A clear, concise overview of what's changing and why. Focus on user-facing behavior or visible impact. Avoid technical implementation details unless essential for understanding the change.
+
+Testing Steps:
+
+List of flat, concise steps QA or reviewers can follow to verify the change.
+
+Each step should describe what the user should do or observe, not how it's implemented.
+
+No sub-bullets or nested lists.
+
+Estimated Time to Test:
+Provide a simple time estimate (e.g., "~5 minutes").
+
+Keep the overall tone straightforward and focused on the user experience.
+```
+
+**Why this works**: The main benefit is time savings. Instead of manually writing PR descriptions and testing steps, I include the changed files from my branch as context and Cursor generates everything automatically. It knows what code changed, understands the context, and produces a description with testing steps ready to go. The flat list format (no nested bullets) makes testing steps easy to follow, and the time estimate helps QA prioritize.
+
+### Create Ticket Command
+
+This generates JIRA tickets with a user-focused perspective. It avoids implementation details and keeps everything testable and clear.
+
+```Markdown
+Create a concise JIRA ticket title and description based on the attached context.
+
+The output should follow this format:
+
+Title:
+A clear, action-oriented summary describing what the user will experience or what needs verification.
+
+Description:
+A short paragraph explaining what's changing from the user's perspective and why it matters. Keep it simple and non-technical.
+
+Acceptance Criteria:
+
+List of clear, testable outcomes that describe what the user should see or be able to do.
+
+Each item should be a single line with no sub-bullets.
+
+Avoid implementation or code-level details.
+
+Testing Steps:
+
+List of steps QA can follow to verify the change works as intended.
+
+Each step should be short, sequential, and written from the user's point of view.
+
+No sub-bullets or nested lists.
+
+Keep the overall ticket concise, clear, and focused on user-facing behavior.
+```
+
+**Why this works**: I've written too many tickets that were impossible for QA to understand because they were full of technical jargon. This command forces me to write from the user's perspective, which means tickets are actually useful. The flat list format makes acceptance criteria easy to check off during testing.
+
+The "no sub-bullets" rule is crucial. I used to create deeply nested lists that were hard to scan. Flat lists are faster to read and easier to verify.
+
+## What I Learned
+
+The biggest lesson: **constraints create better output**. Without rules like "keep under 2 sentences" or "no sub-bullets," the AI tends to be verbose and generic. With constraints, it produces focused, actionable content.
+
+Another insight: **define the format first**. Before writing the prompt, I think about what the output should look like. Should it be a list? A paragraph? Structured sections? Once I know the format, writing the prompt is easier.
+
+Finally, **test with real examples**. I've rewritten each of these commands multiple times after using them on actual PRs and tickets. The first version is never perfect. You learn what works by using it.
+
+## Creating Your Own Commands
+
+If you want to create your own commands, here's my process:
+
+1. **Identify the repetitive task**: What do you do over and over that follows a similar pattern?
+2. **Define the output format**: What should the result look like? Be specific.
+3. **Add constraints**: What rules will keep the output focused? (length limits, format requirements, tone)
+4. **Test and iterate**: Use it on real examples and refine based on what doesn't work
+
+The commands live in `.cursor/commands` as `.md` files. Type `/` in Cursor's chat to see them. You can also add extra context when calling them:
+
+```
+/review check for performance issues
+/create-pr this fixes the login bug from ticket JIRA-123
+```
+
+The command uses both your additional context and whatever code/files you have selected or open.
