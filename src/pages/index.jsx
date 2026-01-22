@@ -128,7 +128,7 @@ function Resume() {
   ]
 
   return (
-    <div className="rounded-2xl border-2 border-zinc-100 p-6 dark:border-zinc-700/40">
+    <div className="p-6 bg-[url('/squares-small.png')] dark:bg-none bg-repeat">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-greptile-green">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -136,7 +136,7 @@ function Resume() {
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
           <li key={roleIndex} className="flex gap-4">
-            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
               <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
             </div>
             <dl className="flex flex-auto flex-wrap gap-x-2">
@@ -170,10 +170,10 @@ function Resume() {
       <Button
         href="/work-history"
         variant="secondary"
-        className="group mt-6 w-full"
+        className="group mt-6 w-full bg-transparent border-2 border-greptile-green text-greptile-green hover:bg-greptile-green hover:text-white"
       >
         View work history
-        <ChevronRightIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        <ChevronRightIcon className="h-4 w-4 stroke-greptile-green transition group-active:stroke-white dark:group-hover:stroke-white dark:group-active:stroke-white" />
       </Button>
     </div>
   )
@@ -189,7 +189,7 @@ function Photos() {
           <div
             key={image.src}
             className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+              'relative aspect-[9/10] w-44 flex-none overflow-hidden bg-zinc-100 dark:bg-zinc-800 sm:w-72',
               rotations[imageIndex % rotations.length]
             )}
           >
@@ -219,7 +219,7 @@ export default function Home({ articles }) {
         />
       </Head>
       <Container className="mt-9">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl bg-[url('/squares.png')] dark:bg-none bg-repeat">
           <h1 className="h-30 text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:h-40 sm:text-5xl">
             Senior Engineer. Developer experience advocate. Interface designer.
           </h1>

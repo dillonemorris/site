@@ -146,7 +146,7 @@ module.exports = {
 
           // Images
           img: {
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: 0,
           },
 
           // Inline elements
@@ -173,7 +173,7 @@ module.exports = {
             fontSize: theme('fontSize.sm')[0],
             fontWeight: theme('fontWeight.semibold'),
             backgroundColor: 'var(--tw-prose-code-bg)',
-            borderRadius: theme('borderRadius.lg'),
+            borderRadius: 0,
             paddingLeft: theme('spacing.1'),
             paddingRight: theme('spacing.1'),
           },
@@ -243,7 +243,7 @@ module.exports = {
             fontSize: theme('fontSize.sm')[0],
             fontWeight: theme('fontWeight.medium'),
             backgroundColor: 'var(--tw-prose-pre-bg)',
-            borderRadius: theme('borderRadius.3xl'),
+            borderRadius: 0,
             padding: theme('spacing.8'),
             overflowX: 'auto',
             border: '1px solid',

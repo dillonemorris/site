@@ -2,7 +2,7 @@ import { InformationCircleIcon } from '@heroicons/react/20/solid'
 
 export function InfoAlert({ children }) {
   return (
-    <div className="rounded-md border-l-4 border-blue-400 bg-blue-50 p-4">
+    <div className="border-l-4 border-blue-400 bg-blue-50 p-4">
       <div className="flex">
         <div className="flex-shrink-0">
           <InformationCircleIcon

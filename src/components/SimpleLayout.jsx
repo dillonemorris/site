@@ -11,7 +11,9 @@ export function SimpleLayout({ title, intro, children }) {
           {intro}
         </p>
       </header>
-      <div className="mt-16 sm:mt-20">{children}</div>
+      <div className="bg-[url('/squares-small.png')] dark:bg-none bg-repeat">
+       <div className="pt-16 sm:pt-20">{children}</div>
+      </div>
     </Container>
   )
 }

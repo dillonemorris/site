@@ -2,10 +2,10 @@ import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/20/solid'
 
 export const ButtonContrast = ({ isDescriptionShown = true }) => {
   return (
-    <div className="flex w-full flex-col items-center justify-center rounded-lg bg-zinc-50">
+    <div className="flex w-full flex-col items-center justify-center bg-zinc-50">
       <div className="flex w-full flex-col">
         <div className="flex items-center justify-center py-8 pb-4">
-          <button className="rounded-lg bg-blue-100 py-2 px-6 text-blue-900">
+          <button className="bg-blue-100 py-2 px-6 text-blue-900">
             Submit
           </button>
         </div>
@@ -22,7 +22,7 @@ export const ButtonContrast = ({ isDescriptionShown = true }) => {
 
       <div className="flex w-full flex-col">
         <div className="flex items-center justify-center py-8 pb-4">
-          <button className="rounded-lg bg-blue-100 py-2 px-6 text-blue-600">
+          <button className="bg-blue-100 py-2 px-6 text-blue-600">
             Submit
           </button>
         </div>

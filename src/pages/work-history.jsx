@@ -48,7 +48,7 @@ export default function WorkHistory() {
                   on our most challenging projects.
                 </p>
 
-                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                <div className="bg-zinc-50 p-6 dark:bg-zinc-800/50">
                   <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Performance Highlights
                   </h4>
@@ -107,7 +107,7 @@ export default function WorkHistory() {
             </div>
 
             {/* Philosophy Section */}
-            <div className="rounded-xl bg-gradient-to-r from-blue-50 to-emerald-50 p-8 dark:from-blue-900/20 dark:to-emerald-900/20">
+            <div className="bg-gradient-to-r from-blue-50 to-emerald-50 p-8 dark:from-blue-900/20 dark:to-emerald-900/20">
               <h2 className="mb-6 text-2xl font-bold text-zinc-800 dark:text-zinc-100">
                 What Drives My Work
               </h2>
@@ -167,7 +167,7 @@ export default function WorkHistory() {
                   developers.
                 </p>
 
-                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                <div className="bg-zinc-50 p-6 dark:bg-zinc-800/50">
                   <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Key Contributions
                   </h4>
@@ -227,7 +227,7 @@ export default function WorkHistory() {
                   client&apos;s engineers on best practices.
                 </p>
 
-                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                <div className="bg-zinc-50 p-6 dark:bg-zinc-800/50">
                   <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Client Projects
                   </h4>
@@ -290,7 +290,7 @@ export default function WorkHistory() {
                   throughout my career.
                 </p>
 
-                <div className="rounded-lg bg-zinc-50 p-6 dark:bg-zinc-800/50">
+                <div className="bg-zinc-50 p-6 dark:bg-zinc-800/50">
                   <h4 className="mb-3 font-semibold text-zinc-800 dark:text-zinc-100">
                     Foundation-Building Experience
                   </h4>
