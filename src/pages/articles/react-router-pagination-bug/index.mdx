@@ -1,0 +1,363 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+export const meta = {
+  author: 'Dillon Morris',
+  date: '2026-01-22',
+  title: 'The Subtle React Router API Difference That Broke Our Pagination',
+  description:
+    'Understanding when to use history.location vs location from useLocation() in React Router. Learn how synchronous vs asynchronous URL state updates affect component reactivity and URL mutations.',
+}
+
+export default (props) => <ArticleLayout meta={meta} {...props} />
+
+Recently, I encountered a frustrating user experience issue on a work project. We had a paginated table where users could apply filters. The problem? When users were viewing page 2 or later and applied filters, they saw "No Records Found" even though filtered results existed on page 1. Users had to manually navigate back to page 1 to see the results, which created a confusing and poor user experience.
+
+The root cause was in how we were reading URL state during updates. When filters were applied, we needed to reset pagination to page 1 and apply the filters simultaneously. However, if we read the URL state incorrectly, the second update would read stale values, causing the pagination reset to be lost.
+
+This led me to discover a critical distinction in React Router: the difference between `history.location` and `location` from `useLocation()`. Understanding when to use each one is essential for handling URL state updates correctly, especially when multiple updates need to happen in sequence.
+
+## The Two Different Use Cases
+
+### 1. **Reading State for Components (Reactive)**
+
+**Use: `location` from `useLocation()`**
+
+```typescript
+const location = useLocation()
+
+// ✅ Use location.search for reactive state
+const state = useMemo(
+  () => deserializeState(location.search, { keys, prefix }),
+  [location.search, keys, prefix] // Re-renders when URL changes
+)
+```
+
+**Why:**
+
+- `location` from `useLocation()` is part of React Router's state management
+- When it changes, React automatically re-renders components that depend on it
+- Perfect for components that need to react to URL changes
+
+**Examples:**
+
+- Deriving component state from URL params
+- Displaying current URL state in UI
+- Conditional rendering based on URL
+
+### 2. **Reading State During Updates (Synchronous)**
+
+**Use: `history.location`**
+
+```typescript
+// Inside a function that updates the URL
+function updateUrl(newState) {
+  // ✅ Use history.location.search to read current state
+  const currentSearch = history.location?.search ?? location.search
+  // ... merge with newState ...
+  history.replace({ search: mergedSearch })
+}
+```
+
+**Why:**
+
+- `history.location` updates **synchronously** when `history.replace()` is called
+- Needed when multiple URL updates happen in sequence
+- Ensures you read the most up-to-date URL state during mutations
+
+**Examples:**
+
+- Merging URL params during updates
+- Reading current state before applying changes
+- Coordinating multiple URL state updates
+
+## Current Implementation Pattern
+
+Looking at `useUrlState`, it uses **both** appropriately:
+
+```typescript
+export const useUrlState = () => {
+  const history = useHistory()
+  const location = useLocation() // For reactive reads
+
+  // ✅ REACTIVE: Use location for component state
+  const state = useMemo(
+    () => deserializeState(location.search, { keys, prefix }),
+    [location.search, keys, prefix] // Re-renders on URL change
+  )
+
+  const setState = useCallback(
+    (newState) => {
+      // ✅ SYNCHRONOUS: Use history.location when updating
+      replaceHistorySearchParams(history, location, newState, {
+        // Inside replaceHistorySearchParams:
+        // const currentSearch = history.location?.search ?? location.search;
+      })
+    },
+    [history, location, keys, prefix]
+  )
+
+  return { state, setState }
+}
+```
+
+## Decision Tree
+
+```
+Are you reading URL state?
+│
+├─ Is it for a component that should re-render when URL changes?
+│  └─ YES → Use `location` from `useLocation()`
+│     Example: const state = useMemo(() => parse(location.search), [location.search]);
+│
+└─ Is it inside a function that's updating the URL?
+   └─ YES → Use `history.location`
+      Example: const current = history.location?.search ?? location.search;
+```
+
+## Key Differences
+
+| Aspect            | `location` (useLocation)   | `history.location`          |
+| ----------------- | -------------------------- | --------------------------- |
+| **Update timing** | Asynchronous (next render) | Synchronous (immediate)     |
+| **Use case**      | Reactive component state   | Reading during mutations    |
+| **Re-renders**    | Triggers React re-renders  | Does not trigger re-renders |
+| **When to use**   | Displaying URL state in UI | Coordinating URL updates    |
+
+## Real-World Example: The Pagination Issue
+
+This is exactly the pattern that solved the pagination issue I mentioned in the introduction:
+
+```typescript
+// Component that displays current page
+function PageDisplay() {
+  const location = useLocation() // ✅ Reactive
+  const page = new URLSearchParams(location.search).get('page')
+  return <div>Current page: {page}</div> // Re-renders when URL changes
+}
+
+// Function that resets pagination and applies filters
+function setFiltersWithPaginationReset(newFilters) {
+  // Step 1: Reset pagination to page 1
+  setPagination({ pageIndex: 0 })
+
+  // Step 2: Apply filters (happens immediately after, same tick)
+  setFilters(newFilters)
+
+  // Inside replaceHistorySearchParams (called by both):
+  // ✅ Need synchronous read using history.location
+  const currentSearch = history.location?.search ?? location.search
+  const params = new URLSearchParams(currentSearch)
+  // ... merge params ...
+  history.replace({ search: params.toString() })
+
+  // Because history.location updates synchronously, the second call
+  // can read the updated page=1 from the first call
+}
+```
+
+When filters are applied while on page 2+, both updates happen in the same execution tick. Using `history.location` ensures the second update reads the updated page number from the first update, preventing the "No Records Found" issue.
+
+## Why Not Always Use `history.location`?
+
+You might be wondering: if `history.location` updates synchronously and gives us the most current state, why not use it everywhere? The answer lies in how React handles re-renders.
+
+## The Critical Difference: React Re-renders
+
+### The Problem with Always Using `history.location`
+
+If we used `history.location` everywhere, **components wouldn't re-render when the URL changes**!
+
+```typescript
+// ❌ BAD: Using history.location for component state
+const state = useMemo(
+  () => deserializeState(history.location.search, { keys, prefix }),
+  [history.location.search, keys, prefix] // ❌ This won't trigger re-renders!
+)
+
+// Component using this state:
+function MyComponent() {
+  const { state } = useUrlState({ keys: ['page'] })
+  return <div>Page: {state.page}</div> // ❌ Won't update when URL changes!
+}
+```
+
+### Why `location` from `useLocation()` is Needed
+
+```typescript
+// ✅ GOOD: Using location for component state
+const state = useMemo(
+  () => deserializeState(location.search, { keys, prefix }),
+  [location.search, keys, prefix] // ✅ Triggers re-renders when URL changes!
+)
+
+// Component using this state:
+function MyComponent() {
+  const { state } = useUrlState({ keys: ['page'] })
+  return <div>Page: {state.page}</div> // ✅ Updates when URL changes!
+}
+```
+
+## How React Router's Reactivity Works
+
+### `location` from `useLocation()` - Reactive
+
+```typescript
+const location = useLocation()
+
+// This is part of React Router's context
+// When the URL changes:
+// 1. React Router updates its internal state
+// 2. Components using useLocation() re-render
+// 3. useMemo dependencies trigger recalculation
+```
+
+**Flow:**
+
+```
+URL changes → React Router state updates → useLocation() triggers re-render → Component updates
+```
+
+### `history.location` - Not Reactive
+
+```typescript
+const history = useHistory()
+
+// This is the raw History API object
+// When the URL changes:
+// 1. history.location is updated synchronously
+// 2. BUT React doesn't know about it
+// 3. Components don't re-render
+```
+
+**Flow:**
+
+```
+URL changes → history.location updates → ❌ No React re-render → Component stays stale
+```
+
+## Real Example: What Would Break
+
+### Current Implementation (Correct)
+
+```typescript
+export const useUrlState = () => {
+  const location = useLocation()
+  const history = useHistory()
+
+  // ✅ REACTIVE: Components re-render when URL changes
+  const state = useMemo(
+    () => deserializeState(location.search, { keys, prefix }),
+    [location.search, keys, prefix] // ← Triggers re-render
+  )
+
+  const setState = useCallback((newState) => {
+    // ✅ SYNCHRONOUS: Reads updated state during mutations
+    replaceHistorySearchParams(history, location, newState, {
+      // Uses history.location.search for reading
+    })
+  }, [])
+
+  return { state, setState }
+}
+```
+
+### If We Used `history.location` Everywhere (Broken)
+
+```typescript
+export const useUrlState = () => {
+  const history = useHistory()
+
+  // ❌ NOT REACTIVE: Components won't re-render!
+  const state = useMemo(
+    () => deserializeState(history.location.search, { keys, prefix }),
+    [history.location.search, keys, prefix] // ← Won't trigger re-render!
+  )
+
+  const setState = useCallback((newState) => {
+    replaceHistorySearchParams(history, location, newState)
+  }, [])
+
+  return { state, setState }
+}
+
+// Component using this:
+function DataGrid() {
+  const { state } = useUrlState()
+  // ❌ This component won't re-render when URL changes!
+  // ❌ UI will show stale data!
+  return <div>Current page: {state.page}</div>
+}
+```
+
+## The Two Use Cases Are Different
+
+### 1. Reading for Display (Reactive) → Use `location`
+
+**Purpose:** Components need to update when URL changes
+
+**Example:**
+
+```typescript
+function PageDisplay() {
+  const location = useLocation()
+  const page = new URLSearchParams(location.search).get('page')
+
+  // ✅ This component re-renders when URL changes
+  // ✅ Shows current page number
+  return <div>Page {page}</div>
+}
+```
+
+### 2. Reading During Mutations (Synchronous) → Use `history.location`
+
+**Purpose:** Need current state during update operations
+
+**Example:**
+
+```typescript
+function updateUrl(newState) {
+  // ✅ Read current state synchronously
+  const current = history.location?.search
+
+  // ✅ Merge with new state
+  const merged = mergeStates(current, newState)
+
+  // ✅ Update URL
+  history.replace({ search: merged })
+}
+```
+
+## Why React Router Designed It This Way
+
+React Router separates concerns:
+
+1. **`history.location`** - Raw History API
+
+   - Synchronous updates
+   - For imperative operations
+   - Doesn't trigger React re-renders
+
+2. **`location` from `useLocation()`** - React state
+   - Asynchronous updates (next render)
+   - For declarative components
+   - Triggers React re-renders
+
+This separation allows:
+
+- Components to reactively update (declarative)
+- Functions to read current state synchronously (imperative)
+
+## Summary
+
+Understanding when to use `history.location` vs `location` from `useLocation()` is crucial for building robust React Router applications:
+
+- **`location` from `useLocation()`**: Use for reactive reads in components. It triggers React re-renders when the URL changes, making it perfect for deriving component state from URL params.
+
+- **`history.location`**: Use for synchronous reads during URL mutations. When multiple URL updates happen in sequence (like resetting pagination and applying filters), `history.location` updates synchronously, ensuring each update reads the most current state.
+
+**The key takeaway:** Both serve different purposes and should be used together:
+
+- `location` → Reactive component state (triggers re-renders)
+- `history.location` → Synchronous reads during mutations (no re-renders, but immediate updates)
+
+In the pagination issue I encountered, using `history.location` when reading URL state during updates ensured that when we reset pagination to page 1 and then applied filters, the second update could read the updated page number from the first update. This fixed the "No Records Found" issue and provided a much better user experience.
