@@ -1,0 +1,16 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+import { TypeScriptLookup } from '@/components/TypeScriptLookup'
+
+export const meta = {
+  author: 'Dillon Morris',
+  date: '2025-01-29',
+  title: 'TypeScript Lookup',
+  description:
+    'A searchable dictionary of TypeScript types, keywords, and utility types with examples and documentation links.',
+}
+
+export default (props) => (
+  <ArticleLayout showHeader={false} meta={meta} {...props} />
+)
+
+<TypeScriptLookup />
