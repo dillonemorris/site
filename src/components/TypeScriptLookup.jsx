@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
+import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 
 // TypeScript terms database
 const TYPESCRIPT_TERMS = {
@@ -348,18 +349,6 @@ const permissions: Permissions = {
   },
 }
 
-function SearchIcon(props) {
-  return (
-    <svg viewBox="0 0 20 20" fill="none" aria-hidden="true" {...props}>
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-      />
-    </svg>
-  )
-}
-
 export function TypeScriptLookup() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTerm, setSelectedTerm] = useState(null)
@@ -419,7 +408,7 @@ export function TypeScriptLookup() {
       {/* Search Input */}
       <div className="relative mx-auto mb-12 max-w-2xl">
         <div className="relative">
-          <SearchIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 stroke-zinc-400 dark:stroke-zinc-500" />
+          <MagnifyingGlassIcon className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 stroke-zinc-400 dark:stroke-zinc-500" />
           <input
             type="text"
             value={searchQuery}
