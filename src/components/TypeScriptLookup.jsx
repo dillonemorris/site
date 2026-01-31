@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Highlight, themes } from 'prism-react-renderer'
 
 // TypeScript terms database
 const TYPESCRIPT_TERMS = {
@@ -363,7 +364,6 @@ export function TypeScriptLookup() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedTerm, setSelectedTerm] = useState(null)
 
-  // Filter terms based on search query
   const filteredTerms = Object.entries(TYPESCRIPT_TERMS).filter(
     ([key, term]) =>
       key.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -371,7 +371,6 @@ export function TypeScriptLookup() {
       term.description.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  // Clear selected term when search query changes
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value)
     if (e.target.value && selectedTerm) {
@@ -379,16 +378,13 @@ export function TypeScriptLookup() {
     }
   }
 
-  // Handle term selection
   const handleTermClick = (termKey) => {
     setSelectedTerm(termKey)
-    setSearchQuery('') // Clear search when selecting a term
+    setSearchQuery('')
   }
 
-  // Handle related term click
   const handleRelatedClick = (termKey) => {
     setSelectedTerm(termKey)
-    // Scroll to top of explanation
     document.getElementById('explanation-panel')?.scrollIntoView({
       behavior: 'smooth',
       block: 'nearest',
@@ -500,11 +496,103 @@ export function TypeScriptLookup() {
               <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
                 Example
               </h3>
-              <pre className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900 p-5 font-mono text-sm text-zinc-100 shadow-inner dark:border-zinc-700 dark:bg-black">
-                <code className="language-typescript whitespace-pre">
-                  {selectedTermData.example}
-                </code>
-              </pre>
+              <Highlight
+                theme={{
+                  plain: {
+                    color: '#fafafa', // zinc-100
+                    backgroundColor: '#18181b', // zinc-900
+                  },
+                  styles: [
+                    {
+                      types: ['keyword', 'rule', 'important'],
+                      style: { color: '#c084fc' }, // purple-400
+                    },
+                    {
+                      types: ['function', 'method'],
+                      style: { color: '#f472b6' }, // pink-400
+                    },
+                    {
+                      types: ['class-name', 'maybe-class-name', 'builtin'],
+                      style: { color: '#f472b6' }, // pink-400
+                    },
+                    {
+                      types: ['string', 'template-string', 'attr-value'],
+                      style: { color: '#34d399' }, // emerald-400
+                    },
+                    {
+                      types: ['number', 'boolean'],
+                      style: { color: '#fb923c' }, // orange-400
+                    },
+                    {
+                      types: ['operator', 'combinator'],
+                      style: { color: '#22d3ee' }, // cyan-400
+                    },
+                    {
+                      types: ['property', 'attr-name'],
+                      style: { color: '#93c5fd' }, // blue-300
+                    },
+                    {
+                      types: ['type', 'type-annotation', 'return-type'],
+                      style: { color: '#67e8f9' }, // cyan-300
+                    },
+                    {
+                      types: ['constant'],
+                      style: { color: '#fdba74' }, // orange-300
+                    },
+                    {
+                      types: ['parameter'],
+                      style: { color: '#e4e4e7' }, // zinc-200
+                    },
+                    {
+                      types: ['regex'],
+                      style: { color: '#f472b6' }, // pink-400
+                    },
+                    {
+                      types: ['interpolation'],
+                      style: { color: '#67e8f9' }, // cyan-300
+                    },
+                    {
+                      types: ['punctuation', 'attr-equals'],
+                      style: { color: '#a1a1aa' }, // zinc-400
+                    },
+                    {
+                      types: ['comment'],
+                      style: { color: '#71717a', fontStyle: 'italic' }, // zinc-500
+                    },
+                    {
+                      types: ['tag', 'selector'],
+                      style: { color: '#f472b6' }, // pink-400
+                    },
+                    {
+                      types: ['module'],
+                      style: { color: '#c084fc' }, // purple-400
+                    },
+                  ],
+                }}
+                code={selectedTermData.example}
+                language="typescript"
+              >
+                {({
+                  className,
+                  style,
+                  tokens,
+                  getLineProps,
+                  getTokenProps,
+                }) => (
+                  <pre
+                    className={`${className} overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900 p-5 font-mono text-sm shadow-inner dark:border-zinc-700 dark:bg-black`}
+                    style={style}
+                  >
+                    {tokens.map((line, i) => (
+                      <div key={i} {...getLineProps({ line })}>
+                        {line.map((token, key) => (
+                          <span key={key} {...getTokenProps({ token })} />
+                        ))}
+                      </div>
+                    ))}
+                  </pre>
+                )}
+              </Highlight>
             </div>
 
             {/* Related Terms */}

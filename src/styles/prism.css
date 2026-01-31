@@ -1,47 +1,108 @@
+/* Base text color for code blocks */
 pre[class*='language-'] {
   color: theme('colors.zinc.100');
 }
 
-.token.tag,
-.token.class-name,
-.token.selector,
-.token.selector .class,
-.token.selector.class,
-.token.function {
-  color: theme('colors.pink.400');
-}
-
-.token.attr-name,
+/* Keywords: const, let, var, function, return, if, else, etc. */
 .token.keyword,
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  color: theme('colors.zinc.300');
+  color: theme('colors.purple.400');
 }
 
-.token.module {
+/* Functions and methods */
+.token.function,
+.token.method {
   color: theme('colors.pink.400');
 }
 
-.token.attr-value,
-.token.class,
+/* Class names and types */
+.token.class-name,
+.token.maybe-class-name,
+.token.builtin {
+  color: theme('colors.pink.400');
+}
+
+/* Strings and template literals */
 .token.string,
-.token.property {
+.token.template-string,
+.token.attr-value {
+  color: theme('colors.emerald.400');
+}
+
+/* Numbers and booleans */
+.token.number,
+.token.boolean {
+  color: theme('colors.orange.400');
+}
+
+/* Operators: =, +, -, =>, etc. */
+.token.operator,
+.token.combinator {
+  color: theme('colors.cyan.400');
+}
+
+/* Properties and attributes */
+.token.property,
+.token.attr-name {
   color: theme('colors.blue.300');
 }
 
-.token.punctuation,
-.token.attr-equals {
-  color: theme('colors.zinc.500');
+/* Types and interfaces (TypeScript) */
+.token.type,
+.token.type-annotation,
+.token.return-type {
+  color: theme('colors.cyan.300');
 }
 
+/* Constants (UPPER_CASE variables) */
+.token.constant {
+  color: theme('colors.orange.300');
+}
+
+/* Function parameters */
+.token.parameter {
+  color: theme('colors.zinc.200');
+}
+
+/* Regular expressions */
+.token.regex {
+  color: theme('colors.pink.400');
+}
+
+/* Template string interpolation ${} */
+.token.interpolation {
+  color: theme('colors.cyan.300');
+}
+
+/* Punctuation: brackets, braces, parentheses */
+.token.punctuation,
+.token.attr-equals {
+  color: theme('colors.zinc.400');
+}
+
+/* Comments - with italic styling */
+.token.comment {
+  color: theme('colors.zinc.500');
+  font-style: italic;
+}
+
+/* Tags (for JSX/HTML) */
+.token.tag,
+.token.selector,
+.token.selector .class,
+.token.selector.class {
+  color: theme('colors.pink.400');
+}
+
+/* Module keywords (import, export, from) */
+.token.module {
+  color: theme('colors.purple.400');
+}
+
+/* CSS-specific tokens */
 .token.unit,
 .language-css .token.function {
   color: theme('colors.sky.200');
-}
-
-.token.comment,
-.token.operator,
-.token.combinator {
-  color: theme('colors.zinc.400');
 }
