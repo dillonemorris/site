@@ -1,7 +1,6 @@
 import Image from 'next/future/image'
 import Head from 'next/head'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -12,11 +11,6 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
 import logoSynapse from '@/images/logos/synapse.svg'
 import logoElm from '@/images/logos/elmstreet.svg'
 import logoFormidable from '@/images/logos/formidable.svg'
@@ -128,7 +122,7 @@ function Resume() {
   ]
 
   return (
-    <div className="p-6 bg-[url('/squares-small.png')] dark:bg-none bg-repeat">
+    <div className="bg-[url('/squares-small.png')] bg-repeat p-6 dark:bg-none">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-greptile-green">
         <BriefcaseIcon className="h-6 w-6 flex-none" />
         <span className="ml-3">Work</span>
@@ -170,38 +164,11 @@ function Resume() {
       <Button
         href="/work-history"
         variant="secondary"
-        className="group mt-6 w-full bg-transparent border-2 border-greptile-green text-greptile-green hover:bg-greptile-green hover:text-white"
+        className="group mt-6 w-full border-2 border-greptile-green bg-transparent text-greptile-green hover:bg-greptile-green hover:text-white"
       >
         View work history
         <ChevronRightIcon className="h-4 w-4 stroke-greptile-green transition group-active:stroke-white dark:group-hover:stroke-white dark:group-active:stroke-white" />
       </Button>
-    </div>
-  )
-}
-
-function Photos() {
-  let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-  return (
-    <div className="mt-16 sm:mt-20">
-      <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-        {[image2, image1, image5, image4, image3].map((image, imageIndex) => (
-          <div
-            key={image.src}
-            className={clsx(
-              'relative aspect-[9/10] w-44 flex-none overflow-hidden bg-zinc-100 dark:bg-zinc-800 sm:w-72',
-              rotations[imageIndex % rotations.length]
-            )}
-          >
-            <Image
-              src={image}
-              alt=""
-              sizes="(min-width: 640px) 18rem, 11rem"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
@@ -219,7 +186,7 @@ export default function Home({ articles }) {
         />
       </Head>
       <Container className="mt-9">
-        <div className="max-w-3xl bg-[url('/squares.png')] dark:bg-none bg-repeat">
+        <div className="max-w-3xl bg-[url('/squares.png')] bg-repeat dark:bg-none">
           <h1 className="h-30 text-4xl font-bold tracking-tight text-greptile-green dark:text-greptile-green sm:h-40 sm:text-5xl">
             Senior Engineer. Developer experience advocate. Interface designer.
           </h1>
@@ -251,7 +218,6 @@ export default function Home({ articles }) {
       <Container className="mt-16 sm:mt-20">
         <FeaturedProjects />
       </Container>
-      {/*<Photos />*/}
       <Container className="mt-24 sm:mt-32">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">

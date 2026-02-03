@@ -9,8 +9,13 @@ import {
   GitHubIcon,
   LinkedInIcon,
 } from '@/components/SocialIcons'
-import { CodeBracketIcon, WrenchScrewdriverIcon, ChatBubbleLeftRightIcon, PaintBrushIcon } from '@heroicons/react/24/outline'
-import portraitImage from '@/images/photos/portrait.jpg'
+import {
+  CodeBracketIcon,
+  WrenchScrewdriverIcon,
+  ChatBubbleLeftRightIcon,
+  PaintBrushIcon,
+} from '@heroicons/react/24/outline'
+import portraitImage from '@/images/profile-pic-2-optimized.jpeg'
 
 function SocialLink({ className, href, children, icon: Icon }) {
   return (
@@ -63,7 +68,7 @@ export default function About() {
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
               My Engineering Philosophy
             </h1>
-            <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400 font-mono">
+            <div className="mt-6 space-y-7 font-mono text-base text-zinc-600 dark:text-zinc-400">
               <p>
                 I believe in pragmatic engineering balanced with
                 product-thinking. My approach combines technical excellence with
@@ -87,11 +92,12 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Code Reviews & Collaboration
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
-                          I view thorough, collaborative code reviews as essential
-                          to helping fellow developers grow. My reviews focus on
-                          knowledge sharing, best practices, and building stronger
-                          teams while maintaining high code quality.
+                        <p className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
+                          I view thorough, collaborative code reviews as
+                          essential to helping fellow developers grow. My
+                          reviews focus on knowledge sharing, best practices,
+                          and building stronger teams while maintaining high
+                          code quality.
                         </p>
                       </div>
                     </div>
@@ -103,11 +109,11 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Developer Experience & Tooling
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
-                          I&apos;m passionate about improving developer workflows through
-                          thoughtful tooling, strict TypeScript configurations, and
-                          systems that catch errors early and make developers more
-                          productive.
+                        <p className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
+                          I&apos;m passionate about improving developer
+                          workflows through thoughtful tooling, strict
+                          TypeScript configurations, and systems that catch
+                          errors early and make developers more productive.
                         </p>
                       </div>
                     </div>
@@ -119,9 +125,9 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           Beautiful, Usable Interfaces
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
-                          I design and build interfaces that are both beautiful and
-                          highly functional, focusing on user experience and
+                        <p className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
+                          I design and build interfaces that are both beautiful
+                          and highly functional, focusing on user experience and
                           accessibility to create products people love to use.
                         </p>
                       </div>
@@ -134,7 +140,7 @@ export default function About() {
                         <h3 className="mb-2 font-semibold text-zinc-900 dark:text-zinc-100">
                           End-to-End Development
                         </h3>
-                        <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
+                        <p className="font-mono text-sm text-zinc-600 dark:text-zinc-400">
                           From PostgreSQL schemas and API design to React
                           components and deployment pipelines, I handle the
                           complete stack with confidence.
