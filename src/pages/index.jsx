@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
-import { FeaturedProjects } from '@/components/FeaturedProjects'
 import {
   InstagramIcon,
   GitHubIcon,
@@ -214,9 +213,6 @@ export default function Home({ articles }) {
             />
           </div>
         </div>
-      </Container>
-      <Container className="mt-16 sm:mt-20">
-        <FeaturedProjects />
       </Container>
       <Container className="mt-24 sm:mt-32">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
