@@ -7,6 +7,11 @@ const nextConfig = {
   pageExtensions: ['jsx', 'mdx'],
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    // Netlify's IPX image function fails to load sharp/libvips (500s), so
+    // serve images as-is instead of through the optimizer.
+    unoptimized: true,
+  },
   experimental: {
     newNextLinkBehavior: true,
     scrollRestoration: true,
